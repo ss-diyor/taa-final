@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fb">
+  <title>Practice of Language Aspects | Final Exam Quiz</title>
+  <style>
+    :root{color-scheme:light;--ink:#17233b;--muted:#65738b;--line:#dfe6f0;--paper:#fff;--bg:#f4f7fb;--blue:#3459d5;--blue-dark:#2444b5;--blue-soft:#edf1ff;--green:#16794d;--green-bg:#e8f7ef;--red:#bd3844;--red-bg:#fff0f0;--shadow:0 18px 55px rgba(34,53,92,.09)}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 12% 0%,#e9efff 0,transparent 42%),var(--bg);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    button{font:inherit}.shell{width:min(100% - 32px,1020px);margin:0 auto;padding:34px 0 64px}.topline{display:flex;align-items:center;gap:12px;margin-bottom:26px;color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.mark{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:white;background:linear-gradient(145deg,#6179ef,#3459d5);box-shadow:0 7px 16px #3459d541;font-size:1.05rem}.panel{background:rgba(255,255,255,.94);border:1px solid #e7ebf2;border-radius:24px;box-shadow:var(--shadow)}
+    .start{padding:clamp(24px,5vw,56px)}.eyebrow{margin:0 0 10px;color:var(--blue);font-size:.78rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase}h1{max-width:720px;margin:0;font-size:clamp(2rem,5vw,3.45rem);line-height:1.08;letter-spacing:-.045em}h2{margin:0;font-size:1.35rem;letter-spacing:-.025em}.intro{max-width:650px;margin:17px 0 30px;color:var(--muted);font-size:1.04rem}.variant-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.mode{min-height:98px;display:flex;align-items:center;justify-content:space-between;text-align:left;gap:18px;padding:19px 20px;border:1px solid var(--line);border-radius:17px;background:#fff;color:var(--ink);cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s}.mode:hover,.mode:focus-visible{outline:none;border-color:#9aabf3;transform:translateY(-2px);box-shadow:0 10px 24px #3459d51a}.mode strong{display:block;font-size:1.03rem}.mode small{display:block;color:var(--muted);margin-top:3px}.mode-icon{flex:none;width:37px;height:37px;display:grid;place-items:center;border-radius:12px;background:var(--blue-soft);color:var(--blue);font-weight:800}.mode.mix{grid-column:1/-1;background:linear-gradient(105deg,#f6f8ff,#fff);border-color:#ccd5fb}
+    .source-note{margin:25px 0 0;color:#77849a;font-size:.83rem}.quiz-head{padding:23px 27px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.quiz-title{display:flex;align-items:center;gap:13px;min-width:0}.quiz-title .eyebrow{margin-bottom:2px}.quiz-title h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.head-actions{display:flex;align-items:center;gap:10px;flex:none}.pill{padding:8px 12px;background:#f2f5fb;border-radius:999px;color:#41516e;font-size:.84rem;font-weight:700;white-space:nowrap}.link-button{border:0;background:none;color:var(--blue);font-weight:750;cursor:pointer;padding:9px 4px}.link-button:hover{text-decoration:underline}.progress-wrap{height:7px;margin:0 3px 20px;background:#e4eaf4;border-radius:99px;overflow:hidden}.progress{height:100%;width:0;background:linear-gradient(90deg,#6378ed,#3459d5);border-radius:inherit;transition:width .2s}
+    .question-list{display:grid;gap:15px}.question{padding:22px 24px;border:1px solid #e4e9f1;border-radius:19px;background:var(--paper);box-shadow:0 6px 18px rgba(34,53,92,.035);scroll-margin-top:20px}.q-top{display:flex;gap:12px;align-items:flex-start}.q-number{flex:none;width:33px;height:33px;display:grid;place-items:center;border-radius:11px;background:var(--blue-soft);color:var(--blue);font-size:.86rem;font-weight:850}.q-prompt{margin:3px 0 15px;font-weight:750;font-size:1.04rem;line-height:1.45}.q-origin{display:inline-block;margin-left:8px;vertical-align:2px;color:#73819a;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-left:45px}.option{display:flex;align-items:flex-start;gap:10px;min-height:45px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:#35435d;cursor:pointer;transition:background .12s,border-color .12s}.option:hover{border-color:#aab8ed;background:#fafbff}.option input{flex:none;margin:4px 0 0;accent-color:var(--blue)}.option .letter{color:#74819a;font-size:.83rem;font-weight:800}.option .opt-text{font-size:.94rem;line-height:1.4}.option.correct{border-color:#8fd0ad;background:var(--green-bg);color:#145e3c}.option.incorrect{border-color:#e7a0a5;background:var(--red-bg);color:#9c2732}.option:has(input:disabled){cursor:default}.question.result-correct{border-color:#a9dcc0}.question.result-wrong{border-color:#edb6ba}.feedback{margin:13px 0 0 45px;padding:10px 12px;border-radius:11px;background:#f4f7fb;color:#43526b;font-size:.88rem}.feedback.good{background:var(--green-bg);color:#145e3c}.feedback.bad{background:var(--red-bg);color:#982d37}.note{margin:9px 0 0 45px;padding:10px 12px;border-left:3px solid #e5b24d;border-radius:0 9px 9px 0;background:#fff9e9;color:#6d5725;font-size:.85rem}.footer-actions{position:sticky;bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;padding:14px 16px;background:rgba(255,255,255,.94);border:1px solid #e7ebf2;border-radius:17px;box-shadow:0 8px 25px rgba(34,53,92,.1);backdrop-filter:blur(12px)}.helper{color:var(--muted);font-size:.88rem}.primary{border:0;border-radius:12px;padding:12px 19px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 6px 15px #3459d533}.primary:hover{background:var(--blue-dark)}.primary:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}.result-banner{margin-bottom:18px;padding:24px 27px;display:flex;align-items:center;justify-content:space-between;gap:20px}.result-score{font-size:1.75rem;font-weight:850;letter-spacing:-.04em}.result-caption{color:var(--muted)}.hidden{display:none!important}
+    @media(max-width:680px){.shell{width:min(100% - 20px,1020px);padding-top:20px}.topline{margin-bottom:17px}.start{padding:25px 20px}.variant-grid{grid-template-columns:1fr}.mode.mix{grid-column:auto}.quiz-head{padding:18px 16px;align-items:flex-start}.head-actions{flex-direction:column;align-items:flex-end;gap:2px}.pill{font-size:.77rem}.question{padding:18px 15px}.options{grid-template-columns:1fr;margin-left:0}.q-prompt{font-size:1rem}.feedback,.note{margin-left:0}.footer-actions{bottom:7px;padding:11px 12px}.helper{max-width:52%;font-size:.8rem}.result-banner{padding:19px;align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="topline"><span class="mark" aria-hidden="true">L</span><span>Practice of Language Aspects</span></div>
+    <section id="startScreen" class="panel start" aria-labelledby="mainTitle">
+      <p class="eyebrow">Final exam practice</p>
+      <h1 id="mainTitle">Choose a variant and begin.</h1>
+      <p class="intro">Practice the exam questions by variant, or shuffle all 120 questions together. Your answers are checked when you submit.</p>
+      <div class="variant-grid" aria-label="Select practice mode">
+        <button class="mode" data-mode="I"><span><strong>Variant I</strong><small>30 questions</small></span><span class="mode-icon" aria-hidden="true">I</span></button>
+        <button class="mode" data-mode="II"><span><strong>Variant II</strong><small>30 questions</small></span><span class="mode-icon" aria-hidden="true">II</span></button>
+        <button class="mode" data-mode="III"><span><strong>Variant III</strong><small>30 questions</small></span><span class="mode-icon" aria-hidden="true">III</span></button>
+        <button class="mode" data-mode="IV"><span><strong>Variant IV</strong><small>30 questions</small></span><span class="mode-icon" aria-hidden="true">IV</span></button>
+        <button class="mode mix" data-mode="mix"><span><strong>Mix / Shuffle</strong><small>All 120 questions in a random order</small></span><span class="mode-icon" aria-hidden="true">↗</span></button>
+      </div>
+      <p class="source-note">Includes the extracted questions and an answer key. A few source items have ambiguous or incomplete wording; those are identified in the review.</p>
+    </section>
+
+    <section id="quizScreen" class="hidden" aria-label="Quiz">
+      <header class="panel quiz-head">
+        <div class="quiz-title"><span class="mark" aria-hidden="true">L</span><div><p id="modeLabel" class="eyebrow">Quiz</p><h2 id="quizHeading">Variant I</h2></div></div>
+        <div class="head-actions"><span id="answeredCount" class="pill">0 answered</span><button id="homeButton" class="link-button" type="button">Change mode</button></div>
+      </header>
+      <div class="progress-wrap" aria-label="Answered questions"><div id="progressBar" class="progress"></div></div>
+      <div id="resultBanner" class="panel result-banner hidden" role="status" aria-live="polite"></div>
+      <div id="questionList" class="question-list"></div>
+      <div class="footer-actions">
+        <span id="footerHelper" class="helper">Choose one answer for each question.</span>
+        <button id="submitButton" class="primary" type="button">Submit answers</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Each answer index is zero-based: 0=A, 1=B, 2=C, 3=D. Multiple indices
+    // are accepted where the source question has more than one defensible answer.
+    const variants = {
+      "I": [
+        {q:"Choose the correct form. Winning a lot of money ___ misery is actually a myth.",o:["results in","is caused by","causes","leads to"],a:[0,2,3],n:"The source sentence is incomplete and three options form plausible causative phrases. A, C, and D are accepted; C is the most direct intended choice."},
+        {q:"Choose the correct travel expression. If a train is ___ on time, it arrives at the expected time.",o:["making","running","going","taking"],a:[1]},
+        {q:"Choose the correct expression. Which phrase means that something was a habit in the past but is not true now?",o:["get used to","be used to","usually","used to"],a:[3]},
+        {q:"Choose the correct form. I’ll never forget the time I ___ my leg.",o:["was used to breaking","broke","would break","used to break"],a:[1]},
+        {q:"Choose the best answer. They won’t ___ you park there.",o:["force","let","suppose","allowing"],a:[1]},
+        {q:"Choose the word that best matches the definition. “The position of a building” is its:",o:["feature","structure","setting","outskirts"],a:[2]},
+        {q:"Choose the correct form. I’ll never forget ___ that tune for the first time.",o:["hear","to hear","hearing","heard"],a:[2]},
+        {q:"Choose the word that best matches the definition. Someone expecting the future to be good is:",o:["optimistic","pessimistic","cautious","realistic"],a:[0]},
+        {q:"Choose the best reply. “That’s not a ___ idea.”",o:["bad","worth","risk","chance"],a:[0]},
+        {q:"Choose the word that best matches the definition. “Very difficult because the training is thorough and detailed” means:",o:["relaxed","rigorous","easy","ordinary"],a:[1]},
+        {q:"Choose the correct preposition. They measured how happy people are as a result ___ winning the lottery.",o:["from","to","on","of"],a:[3]},
+        {q:"Choose the word that best fits. I hope it won’t ___ our friendship.",o:["result","lead","effect","affect"],a:[3]},
+        {q:"Choose the correct meaning. Future continuous describes:",o:["an activity in progress around a particular future time","an action completed before now","a general fact","a past state"],a:[0]},
+        {q:"Choose the correct form. I tried ___ to him, but he didn’t answer his phone.",o:["talked","to talk","talk","talking"],a:[1,3],n:"Both “tried to talk” (attempted) and “tried talking” (tested that approach) are grammatical here."},
+        {q:"Choose the correct meaning. Which expression means “cause something to happen”?",o:["effect on","lead to","be caused by","as a result of"],a:[1]},
+        {q:"Choose the word that best fits. Hundreds of villagers’ lives were saved as a ___ of the government’s help.",o:["result","cause","effect","lead"],a:[0]},
+        {q:"Choose the correct expression. Which phrase means “in my opinion”?",o:["as a whole","as follows","as far as I know","as far as I’m concerned"],a:[3]},
+        {q:"Choose the correct word. They were exhausted by the time they got there and not in the mood for ___.",o:["setting","feature","trekking","structure"],a:[2]},
+        {q:"Choose the best answer. We ___ to change our password straight away.",o:["couldn’t","didn’t need","had","were allowed"],a:[2]},
+        {q:"Choose the best answer. I was ___ to give the money back, but I forgot.",o:["supposed","able","allowed","let"],a:[0]},
+        {q:"Choose the correct verb form. She wants ___ for an aid organisation.",o:["worked","working","work","to work"],a:[3]},
+        {q:"Choose the correct form. I think I ___ similar things every day.",o:["will have done","will be doing","did","have done"],a:[1]},
+        {q:"Choose the correct verb form. I worry too much about ___ mistakes.",o:["to make","make","made","making"],a:[3]},
+        {q:"Choose the best answer. If something is very unlikely, which is suitable?",o:["We probably won’t go.","There’s a good chance we’ll go.","We are bound to go.","We will certainly go."],a:[0]},
+        {q:"Choose the correct collocation. ___ warming",o:["rough","global","solar","environmentally"],a:[1]},
+        {q:"Choose the best response. Which response is cautious rather than enthusiastic?",o:["What a brilliant idea!","Mm, I don’t know about that.","Yes, good idea.","That’s a great idea!"],a:[1]},
+        {q:"Choose the correct form. I tried ___ to him, but he’s still angry.",o:["talked","to talk","talking","talk"],a:[1,2],n:"Both “tried to talk” and “tried talking” are grammatical, with different nuances."},
+        {q:"Choose the correct word. A person who travels for pleasure is a:",o:["volunteer","tourist","manager","researcher"],a:[1]},
+        {q:"Choose the grammatically correct sentence. Which sentence correctly uses used to for a past state?",o:["I was used to be good at maths.","I would be good at maths.","I used to be good at maths.","I use to be good at maths."],a:[2]},
+        {q:"Choose the best answer. I’m ___ to give the money back, but I don’t want to.",o:["let","forced","supposed","allowed"],a:[2]}
+      ],
+      "II": [
+        {q:"Choose the correct form. It’s normal for me now; I ___ the job.",o:["used to","am used to","use to","would"],a:[1]},
+        {q:"Choose the correct verb form. She doesn’t expect ___ much money.",o:["earned","earning","to earn","earn"],a:[2]},
+        {q:"Choose the best answer. If the probability is around 50%, which is suitable?",o:["There’s no chance we’ll go.","We might go.","We will certainly go.","We certainly won’t go."],a:[1]},
+        {q:"Choose the best answer. The Optimism Bias can sometimes lead people to make:",o:["perfect decisions","only financial decisions","bad decisions","no decisions"],a:[2]},
+        {q:"Choose the best reply. “That might be ___ a try.”",o:["worth","possibility","bad","cautious"],a:[0]},
+        {q:"Choose the correct use. “I’ll be getting up at 4 am every day” describes:",o:["a completed future action","a future routine","a past habit","a present fact"],a:[1]},
+        {q:"Choose the correct form. I ___ have a dog, but he died about five years ago.",o:["used to","was used to","would","use"],a:[0]},
+        {q:"Choose the correct passive form. The local people are angry because these old trees ___ next week.",o:["are going to be cut down","have cut down","will cut down","are going to cut down"],a:[0]},
+        {q:"Choose the correct form to complete the sentence. When I was young, we’d ___ the whole summer playing in the fields.",o:["spent","spending","spend","to spend"],a:[2]},
+        {q:"Choose the best adjective. Uruapan has really ___ scenery.",o:["uninspiring","dull","ordinary","remarkable"],a:[3]},
+        {q:"Choose the best reply. “Or readings. Have poetry readings.” “Yeah, that’s a ___.”",o:["possibility","cautious","risk","bad"],a:[0]},
+        {q:"Choose the passive sentence. Choose the correct passive of “I wrote that report.”",o:["That report is writing by me.","That report was written by me.","That report wrote me.","I was written by that report."],a:[1]},
+        {q:"Choose the best answer. Yes, it’s OK. You ___ go home.",o:["have to","mustn’t","can","cannot"],a:[2]},
+        {q:"Choose the best answer. You ___ remove your helmet. It’s dangerous.",o:["mustn’t","should","don’t have to","can"],a:[0]},
+        {q:"Choose the correct collocation. ___ change",o:["carbon","solar","climate","fragile"],a:[2]},
+        {q:"Choose the word that best matches the definition. “Extremely tiring and difficult” means:",o:["easy","gruelling","ordinary","light"],a:[1]},
+        {q:"Choose the expression that is most enthusiastic. Which is the most enthusiastic?",o:["Yes, that makes sense.","Mm, I don’t know about that.","It’s an idea, I suppose.","What a brilliant idea!"],a:[3]},
+        {q:"Choose the correct collocation. ___ friendly",o:["fragile","ecological","environmentally","climate"],a:[2]},
+        {q:"Choose the correct verb form. Look both ways when ___ the road.",o:["cross","crossed","crossing","to cross"],a:[2]},
+        {q:"When I was a child, I ___ like vegetables, but now I love them.",o:["used to","use to","would","am used to"],a:[0]},
+        {q:"Choose the best adjective. If you want to see something original and ___, go to Kizhi Island.",o:["dull","ordinary","common","unique"],a:[3]},
+        {q:"Choose the adjective with a neutral/ordinary meaning. Which adjective means not special?",o:["mind-blowing","ordinary","fabulous","awe-inspiring"],a:[1]},
+        {q:"Choose the best adjective. Ha Long Bay has ___ islands made of limestone.",o:["dull","astonishing","uninspiring","ordinary"],a:[1]},
+        {q:"Choose the correct word. A place where tourists stay is:",o:["accommodation","feature","atmosphere","outskirts"],a:[0]},
+        {q:"Choose the correct form. ___ refers to things we weren’t able to do in the past.",o:["might not","probably won’t","may not","couldn’t"],a:[3]},
+        {q:"Choose the best expression. Which expression means an event is impossible or has a 0% chance?",o:["We could …","There’s a good chance that …","It’s likely that …","There’s no chance that …"],a:[3]},
+        {q:"Choose the word that best matches the definition. “Things that you build” are:",o:["settings","structures","outskirts","features"],a:[1]},
+        {q:"Choose the best answer. I think you ___ give the money back.",o:["don’t have to","should","can’t","mustn’t"],a:[1]},
+        {q:"Choose the adjective with a negative meaning. Which adjective is negative?",o:["out of this world","awesome","uninspiring","awe-inspiring"],a:[2]},
+        {q:"Choose the best answer. We ___ go out on Friday. (= Perhaps we won’t.)",o:["mustn’t","can’t have","may not","couldn’t"],a:[2]}
+      ],
+      "III": [
+        {q:"Choose the correct collocation. ___ energy",o:["solar","rough","carbon","global"],a:[0]},
+        {q:"Choose the word that best fits. Smoking can ___ cancer.",o:["affect","cause","effect","result"],a:[1]},
+        {q:"Choose the word that best matches the definition. Someone not seeing things as they are may be:",o:["cautious","unrealistic","realistic","certain"],a:[1]},
+        {q:"Choose the correct form. Which sentence is NOT correct?",o:["I didn’t used to like jazz.","I didn’t use to like jazz.","I used to live here.","Did you use to live here?"],a:[0]},
+        {q:"Choose the correct meaning. Future perfect describes:",o:["a past habit","an action happening now","an action expected to be completed before a specific future time","a present state"],a:[2]},
+        {q:"Choose the correct form to complete the sentence. When I was young, we never ___ go on holidays.",o:["are used to","used to","use","would to"],a:[1]},
+        {q:"Choose the correct form. I’m looking forward to ___ you.",o:["seeing","to see","saw","see"],a:[0]},
+        {q:"Choose the best answer. We ___ go out on Friday. (= Perhaps we won’t.)",o:["needn’t","couldn’t","might not","mustn’t"],a:[2]},
+        {q:"Choose the adjective with a positive meaning. Which adjective is positive?",o:["ordinary","awesome","disappointing","dull"],a:[1]},
+        {q:"Choose the correct expression. If a flight stops in another city for a while, you:",o:["head up","stop over","turn up","put up"],a:[1]},
+        {q:"Choose the correct tense. “I’ll still be driving home at 5 pm” uses:",o:["past continuous","future perfect","future continuous","present continuous"],a:[2]},
+        {q:"Choose the best expression. Which expression means something is possible but not certain?",o:["It will certainly …","It’s certain that …","There’s no chance that …","There’s a good chance that …"],a:[3]},
+        {q:"Choose the correct form. This small pot ___ to me by my great-grandfather.",o:["was giving","was given","has give","gave"],a:[1]},
+        {q:"Choose the word that best fits. Borrowing large amounts of money can ___ in serious financial problems.",o:["result","cause by","effect on","affect"],a:[0]},
+        {q:"Choose the correct form. I hope ___ you.",o:["to see","see","saw","seeing"],a:[0]},
+        {q:"Choose the word that best fits. Getting married has had a positive ___ on him.",o:["affect","cause","result","effect"],a:[3]},
+        {q:"Choose the correct form to express purpose. We’re going to the beach ___ in the sun.",o:["lie","lay","to lie","lying"],a:[2]},
+        {q:"Choose the best answer. You ___ tell anyone else your password.",o:["can","must not","don’t have to","are allowed to"],a:[1]},
+        {q:"Choose the correct verb form. They escaped by ___ a tunnel under the wall.",o:["to dig","digging","dig","dug"],a:[1]},
+        {q:"Choose the correct form. After be/get used to, we use a ___ or a noun phrase.",o:["gerund","past simple","modal verb","past participle only"],a:[0]},
+        {q:"Choose the correct adjective. They’re ___ to be late. (= I’m sure they’ll be late.)",o:["unlikely","sure","possible","doubtful"],a:[1]},
+        {q:"Choose the correct form. By the time they get here, we ___.",o:["will be finish","will finishing","have finishing","will have finished"],a:[3]},
+        {q:"Choose the correct passive form. I promise that you ___ as soon as your bags arrive.",o:["will be informing","will inform","will be informed","are inform"],a:[2]},
+        {q:"Choose the best answer. Travelling by train is more ___ than going by plane.",o:["fragile","environmentally friendly","global warming","carbon footprint"],a:[1]},
+        {q:"Choose the best answer. We ___ go out on Friday. (= Perhaps we’ll go.)",o:["won’t","could","can’t","mustn’t"],a:[1]},
+        {q:"Choose the correct travel expression. To go somewhere for a couple of weeks means to go:",o:["down","across","away","out"],a:[2]},
+        {q:"Choose the best adjective. The islands are really ___.",o:["unremarkable","dull","ordinary","breathtaking"],a:[3]},
+        {q:"Choose the best answer. You ___ buy a ticket. Entry is free.",o:["are supposed to","have to","don’t have to","mustn’t"],a:[2]},
+        {q:"Choose the correct form. I watched the people ___.",o:["walking around","to walk around","walked around","walk"],a:[0]},
+        {q:"Choose the correct word. It’s one of the oldest cities in Mexico, with waterfalls on the ___ of the city.",o:["setting","structure","feature","outskirts"],a:[3]}
+      ],
+      "IV": [
+        {q:"Choose the correct expression. A tourist may visit a famous place as a main:",o:["attraction","obligation","probability","permission"],a:[0]},
+        {q:"Choose the correct word. Spending money on experiences usually ___ longer-term happiness.",o:["results from","results in","causes by","affects to"],a:[1]},
+        {q:"Choose the correct form. I stopped ___ coffee. (= I stopped because I wanted to drink coffee.)",o:["to drink","drinking","drank","drink"],a:[0]},
+        {q:"Choose the best answer. Which sentence expresses certainty?",o:["We may go.","We could go.","We might go.","We will go."],a:[3]},
+        {q:"Choose the correct collocation. ___ footprint",o:["rough","carbon","solar","fragile"],a:[1]},
+        {q:"Choose the best answer. Which modal expresses a possible future event?",o:["had to","mustn’t","couldn’t","might"],a:[3]},
+        {q:"Choose the word that best matches the definition. “Just before the city ends and the countryside begins” means:",o:["structure","setting","feature","outskirts"],a:[3]},
+        {q:"Choose the best answer. They ___ me give them my phone.",o:["let","supposed","allowed","forced"],a:[0],n:"“Let me give” is the only option that is grammatical as printed. If coercion was intended, the sentence needs “forced me to give.”"},
+        {q:"Choose the best answer. I ___ go home early yesterday.",o:["have to","am allowed","must","could"],a:[3]},
+        {q:"Choose the correct collocation. ___ environment",o:["carbon","global","fragile","solar"],a:[2]},
+        {q:"Choose the correct passive form. When we got to the cinema, all the best tickets ___.",o:["were selling","have sold","had sold","had been sold"],a:[3]},
+        {q:"Choose the correct form. By the time I arrive, the penguins ___ into pairs.",o:["will already have got","got","already get","will be getting"],a:[0]},
+        {q:"Choose the best answer. We ___ remove our helmets. The instructor says so.",o:["didn’t have to","were supposed","weren’t allowed to","could"],a:[1,3],n:"The wording is ambiguous: “were supposed to” expresses an expectation, while “could” expresses permission. The tense in the source also shifts; both are accepted."},
+        {q:"Choose the correct form. Apparently it ___ in the desert by an Egyptian farmer.",o:["discovered","was discovered","has discover","is discovering"],a:[1]},
+        {q:"Choose the correct passive form. These words ___ thousands of years ago.",o:["wrote","were written","are writing","have write"],a:[1]},
+        {q:"Choose the correct form. I could smell something ___.",o:["to burn","burn","burning","burned"],a:[2]},
+        {q:"Choose the correct position. Choose the correct sentence.",o:["Probably it’ll be a nice day always.","It’ll probably be a nice day.","It probably’ll be a nice day.","It’ll be probably a nice day."],a:[1]},
+        {q:"Choose the phrase with a very positive meaning. Which phrase means extremely impressive?",o:["out of this world","a little dull","ordinary","uninspiring"],a:[0]},
+        {q:"Choose the best answer. We were ___ to choose our own passwords.",o:["must","allowed","forced","supposed"],a:[1,2,3],n:"“Allowed,” “forced,” and “supposed” are all grammatical; each gives a different meaning. The source gives no context to select only one."},
+        {q:"Choose the correct form. After explaining the theory, I’ll go on ___ some examples.",o:["describe","to describe","described","describing"],a:[1]},
+        {q:"Choose the correct passive form. The thief ___ yet.",o:["has not caught","is not catching","was not catch","has not been caught"],a:[3]},
+        {q:"Choose the passive sentence. Choose the correct passive of “Someone had already built this bridge.”",o:["This bridge already built someone.","This bridge was already building.","Someone was already built by this bridge.","This bridge had already been built."],a:[3]},
+        {q:"Choose the grammatically correct sentence. Which sentence correctly uses would for a past habit?",o:["We would live in London.","We would have a dog.","We would be good friends.","We would talk for hours every day."],a:[3]},
+        {q:"Choose the correct collocation. The Earth’s ___",o:["friendly","atmosphere","energy","footprint"],a:[1]},
+        {q:"Choose the best answer. It ___ to contain at least 20 characters.",o:["was allowed","could","didn’t have","had"],a:[3]},
+        {q:"Choose the correct word. The most amazing ___ you can see here is the nearby volcano.",o:["setting","outskirts","feature","structure"],a:[2]},
+        {q:"Choose the correct question. ___ you use to live in London?",o:["Would","Were","Do","Did"],a:[3]},
+        {q:"Choose the correct passive form. The first email between two organisations ___ in 1971.",o:["is sending","was sent","has send","sent"],a:[1]},
+        {q:"Choose the expression that is most cautious. Which is the most cautious?",o:["Yes, good idea.","What a brilliant idea!","It’s an idea, I suppose.","That’s a great idea!"],a:[2]},
+        {q:"Choose the correct passive form. Currently, English ___ as an official language in almost 60 countries.",o:["uses","has use","is used","was used"],a:[2]}
+      ]
+    };
+
+    const startScreen = document.getElementById('startScreen');
+    const quizScreen = document.getElementById('quizScreen');
+    const questionList = document.getElementById('questionList');
+    const answeredCount = document.getElementById('answeredCount');
+    const progressBar = document.getElementById('progressBar');
+    const submitButton = document.getElementById('submitButton');
+    const resultBanner = document.getElementById('resultBanner');
+    const footerHelper = document.getElementById('footerHelper');
+    let activeQuestions = [];
+    let activeMode = '';
+    let submitted = false;
+
+    function shuffle(items){
+      for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]];}
+      return items;
+    }
+    function updateProgress(){
+      const answered=questionList.querySelectorAll('input[type="radio"]:checked').length;
+      answeredCount.textContent=`${answered} of ${activeQuestions.length} answered`;
+      progressBar.style.width=`${activeQuestions.length ? answered/activeQuestions.length*100 : 0}%`;
+    }
+    function buildQuestion(item,index){
+      const card=document.createElement('article');card.className='question';card.id=`question-${index}`;
+      const top=document.createElement('div');top.className='q-top';
+      const number=document.createElement('span');number.className='q-number';number.textContent=String(index+1);number.setAttribute('aria-hidden','true');
+      const body=document.createElement('div');body.style.flex='1';
+      const prompt=document.createElement('p');prompt.className='q-prompt';prompt.textContent=item.q;
+      if(activeMode==='mix'){const origin=document.createElement('span');origin.className='q-origin';origin.textContent=`Variant ${item.variant} · question ${item.originalNumber}`;prompt.append(origin);}
+      body.append(prompt);top.append(number,body);card.append(top);
+      const options=document.createElement('div');options.className='options';
+      item.o.forEach((text,i)=>{
+        const label=document.createElement('label');label.className='option';
+        const input=document.createElement('input');input.type='radio';input.name=`answer-${index}`;input.value=String(i);input.setAttribute('aria-label',`${String.fromCharCode(65+i)}. ${text}`);
+        const letter=document.createElement('span');letter.className='letter';letter.textContent=String.fromCharCode(65+i)+')';
+        const optionText=document.createElement('span');optionText.className='opt-text';optionText.textContent=text;
+        label.append(input,letter,optionText);options.append(label);
+      });
+      card.append(options);
+      if(item.n){const note=document.createElement('p');note.className='note';note.textContent=`Answer note: ${item.n}`;card.append(note);}
+      return card;
+    }
+    function begin(mode){
+      activeMode=mode;submitted=false;resultBanner.classList.add('hidden');questionList.replaceChildren();
+      const selected=mode==='mix'
+        ? Object.entries(variants).flatMap(([variant,items])=>items.map((item,i)=>({...item,variant,originalNumber:i+1})))
+        : variants[mode].map((item,i)=>({...item,variant:mode,originalNumber:i+1}));
+      activeQuestions=mode==='mix'?shuffle(selected):selected;
+      document.getElementById('modeLabel').textContent=mode==='mix'?'Mix / Shuffle':'Final exam practice';
+      document.getElementById('quizHeading').textContent=mode==='mix'?'All variants · shuffled':`Variant ${mode}`;
+      activeQuestions.forEach((item,index)=>questionList.append(buildQuestion(item,index)));
+      startScreen.classList.add('hidden');quizScreen.classList.remove('hidden');
+      submitButton.disabled=false;submitButton.textContent='Submit answers';footerHelper.textContent='Choose one answer for each question.';
+      updateProgress();window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function submit(){
+      if(submitted)return;submitted=true;let score=0;
+      activeQuestions.forEach((item,index)=>{
+        const card=document.getElementById(`question-${index}`);const choices=[...card.querySelectorAll('input[type="radio"]')];
+        const picked=choices.findIndex(input=>input.checked);const correct=picked>=0&&item.a.includes(picked);if(correct)score++;
+        card.classList.add(correct?'result-correct':'result-wrong');
+        choices.forEach((input,i)=>{const label=input.closest('.option');input.disabled=true;if(item.a.includes(i))label.classList.add('correct');if(i===picked&&!correct)label.classList.add('incorrect');});
+        const feedback=document.createElement('p');feedback.className=`feedback ${correct?'good':'bad'}`;
+        const accepted=item.a.map(i=>`${String.fromCharCode(65+i)}) ${item.o[i]}`).join(' / ');
+        feedback.textContent=correct?`Correct. Accepted answer${item.a.length>1?'s':''}: ${accepted}.`:picked<0?`No answer selected. Accepted answer${item.a.length>1?'s':''}: ${accepted}.`:`Your answer: ${String.fromCharCode(65+picked)}) ${item.o[picked]}. Accepted answer${item.a.length>1?'s':''}: ${accepted}.`;
+        card.append(feedback);
+      });
+      const percent=Math.round(score/activeQuestions.length*100);
+      resultBanner.innerHTML='';
+      const left=document.createElement('div');const scoreEl=document.createElement('div');scoreEl.className='result-score';scoreEl.textContent=`${score} / ${activeQuestions.length}`;const caption=document.createElement('div');caption.className='result-caption';caption.textContent=`${percent}% correct · Review the highlighted answers below.`;left.append(scoreEl,caption);
+      const again=document.createElement('button');again.type='button';again.className='primary';again.textContent='Practice again';again.addEventListener('click',()=>begin(activeMode));
+      resultBanner.append(left,again);resultBanner.classList.remove('hidden');
+      submitButton.disabled=true;submitButton.textContent='Submitted';footerHelper.textContent=`Final score: ${score} of ${activeQuestions.length}.`;
+      answeredCount.textContent=`${activeQuestions.length} of ${activeQuestions.length} reviewed`;progressBar.style.width='100%';window.scrollTo({top:0,behavior:'smooth'});
+    }
+    document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>begin(button.dataset.mode)));
+    document.getElementById('homeButton').addEventListener('click',()=>{quizScreen.classList.add('hidden');startScreen.classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});});
+    submitButton.addEventListener('click',submit);
+    questionList.addEventListener('change',updateProgress);
+  </script>
+</body>
+</html>
