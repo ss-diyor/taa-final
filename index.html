@@ -1,264 +1,499 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f7fb">
-  <title>Practice of Language Aspects | Final Exam Quiz</title>
-  <style>
-    :root{color-scheme:light;--ink:#17233b;--muted:#65738b;--line:#dfe6f0;--paper:#fff;--bg:#f4f7fb;--blue:#3459d5;--blue-dark:#2444b5;--blue-soft:#edf1ff;--green:#16794d;--green-bg:#e8f7ef;--red:#bd3844;--red-bg:#fff0f0;--shadow:0 18px 55px rgba(34,53,92,.09)}
-    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 12% 0%,#e9efff 0,transparent 42%),var(--bg);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
-    button{font:inherit}.shell{width:min(100% - 32px,1020px);margin:0 auto;padding:34px 0 64px}.topline{display:flex;align-items:center;gap:12px;margin-bottom:26px;color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.mark{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:white;background:linear-gradient(145deg,#6179ef,#3459d5);box-shadow:0 7px 16px #3459d541;font-size:1.05rem}.panel{background:rgba(255,255,255,.94);border:1px solid #e7ebf2;border-radius:24px;box-shadow:var(--shadow)}
-    .start{padding:clamp(24px,5vw,56px)}.eyebrow{margin:0 0 10px;color:var(--blue);font-size:.78rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase}h1{max-width:720px;margin:0;font-size:clamp(2rem,5vw,3.45rem);line-height:1.08;letter-spacing:-.045em}h2{margin:0;font-size:1.35rem;letter-spacing:-.025em}.intro{max-width:650px;margin:17px 0 30px;color:var(--muted);font-size:1.04rem}.variant-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.mode{min-height:98px;display:flex;align-items:center;justify-content:space-between;text-align:left;gap:18px;padding:19px 20px;border:1px solid var(--line);border-radius:17px;background:#fff;color:var(--ink);cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s}.mode:hover,.mode:focus-visible{outline:none;border-color:#9aabf3;transform:translateY(-2px);box-shadow:0 10px 24px #3459d51a}.mode strong{display:block;font-size:1.03rem}.mode small{display:block;color:var(--muted);margin-top:3px}.mode-icon{flex:none;width:37px;height:37px;display:grid;place-items:center;border-radius:12px;background:var(--blue-soft);color:var(--blue);font-weight:800}.mode.mix{grid-column:1/-1;background:linear-gradient(105deg,#f6f8ff,#fff);border-color:#ccd5fb}
-    .source-note{margin:25px 0 0;color:#77849a;font-size:.83rem}.quiz-head{padding:23px 27px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.quiz-title{display:flex;align-items:center;gap:13px;min-width:0}.quiz-title .eyebrow{margin-bottom:2px}.quiz-title h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.head-actions{display:flex;align-items:center;gap:10px;flex:none}.pill{padding:8px 12px;background:#f2f5fb;border-radius:999px;color:#41516e;font-size:.84rem;font-weight:700;white-space:nowrap}.link-button{border:0;background:none;color:var(--blue);font-weight:750;cursor:pointer;padding:9px 4px}.link-button:hover{text-decoration:underline}.progress-wrap{height:7px;margin:0 3px 20px;background:#e4eaf4;border-radius:99px;overflow:hidden}.progress{height:100%;width:0;background:linear-gradient(90deg,#6378ed,#3459d5);border-radius:inherit;transition:width .2s}
-    .question-list{display:grid;gap:15px}.question{padding:22px 24px;border:1px solid #e4e9f1;border-radius:19px;background:var(--paper);box-shadow:0 6px 18px rgba(34,53,92,.035);scroll-margin-top:20px}.q-top{display:flex;gap:12px;align-items:flex-start}.q-number{flex:none;width:33px;height:33px;display:grid;place-items:center;border-radius:11px;background:var(--blue-soft);color:var(--blue);font-size:.86rem;font-weight:850}.q-prompt{margin:3px 0 15px;font-weight:750;font-size:1.04rem;line-height:1.45}.q-origin{display:inline-block;margin-left:8px;vertical-align:2px;color:#73819a;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-left:45px}.option{display:flex;align-items:flex-start;gap:10px;min-height:45px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;color:#35435d;cursor:pointer;transition:background .12s,border-color .12s}.option:hover{border-color:#aab8ed;background:#fafbff}.option input{flex:none;margin:4px 0 0;accent-color:var(--blue)}.option .letter{color:#74819a;font-size:.83rem;font-weight:800}.option .opt-text{font-size:.94rem;line-height:1.4}.option.correct{border-color:#8fd0ad;background:var(--green-bg);color:#145e3c}.option.incorrect{border-color:#e7a0a5;background:var(--red-bg);color:#9c2732}.option:has(input:disabled){cursor:default}.question.result-correct{border-color:#a9dcc0}.question.result-wrong{border-color:#edb6ba}.feedback{margin:13px 0 0 45px;padding:10px 12px;border-radius:11px;background:#f4f7fb;color:#43526b;font-size:.88rem}.feedback.good{background:var(--green-bg);color:#145e3c}.feedback.bad{background:var(--red-bg);color:#982d37}.note{margin:9px 0 0 45px;padding:10px 12px;border-left:3px solid #e5b24d;border-radius:0 9px 9px 0;background:#fff9e9;color:#6d5725;font-size:.85rem}.footer-actions{position:sticky;bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;padding:14px 16px;background:rgba(255,255,255,.94);border:1px solid #e7ebf2;border-radius:17px;box-shadow:0 8px 25px rgba(34,53,92,.1);backdrop-filter:blur(12px)}.helper{color:var(--muted);font-size:.88rem}.primary{border:0;border-radius:12px;padding:12px 19px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 6px 15px #3459d533}.primary:hover{background:var(--blue-dark)}.primary:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}.result-banner{margin-bottom:18px;padding:24px 27px;display:flex;align-items:center;justify-content:space-between;gap:20px}.result-score{font-size:1.75rem;font-weight:850;letter-spacing:-.04em}.result-caption{color:var(--muted)}.hidden{display:none!important}
-    @media(max-width:680px){.shell{width:min(100% - 20px,1020px);padding-top:20px}.topline{margin-bottom:17px}.start{padding:25px 20px}.variant-grid{grid-template-columns:1fr}.mode.mix{grid-column:auto}.quiz-head{padding:18px 16px;align-items:flex-start}.head-actions{flex-direction:column;align-items:flex-end;gap:2px}.pill{font-size:.77rem}.question{padding:18px 15px}.options{grid-template-columns:1fr;margin-left:0}.q-prompt{font-size:1rem}.feedback,.note{margin-left:0}.footer-actions{bottom:7px;padding:11px 12px}.helper{max-width:52%;font-size:.8rem}.result-banner{padding:19px;align-items:flex-start;flex-direction:column}}
-  </style>
-</head>
-<body>
-  <main class="shell">
-    <div class="topline"><span class="mark" aria-hidden="true">L</span><span>Practice of Language Aspects</span></div>
-    <section id="startScreen" class="panel start" aria-labelledby="mainTitle">
-      <p class="eyebrow">Final exam practice</p>
-      <h1 id="mainTitle">Choose a variant and begin.</h1>
-      <p class="intro">Practice the exam questions by variant, or shuffle all 120 questions together. Your answers are checked when you submit.</p>
-      <div class="variant-grid" aria-label="Select practice mode">
-        <button class="mode" data-mode="I"><span><strong>Variant I</strong><small>30 questions</small></span><span class="mode-icon" aria-hidden="true">I</span></button>
-        <button class="mode" data-mode="II"><span><strong>Variant II</strong><small>30 questions</small></span><span class="mode-icon" aria-hidden="true">II</span></button>
-        <button class="mode" data-mode="III"><span><strong>Variant III</strong><small>30 questions</small></span><span class="mode-icon" aria-hidden="true">III</span></button>
-        <button class="mode" data-mode="IV"><span><strong>Variant IV</strong><small>30 questions</small></span><span class="mode-icon" aria-hidden="true">IV</span></button>
-        <button class="mode mix" data-mode="mix"><span><strong>Mix / Shuffle</strong><small>All 120 questions in a random order</small></span><span class="mode-icon" aria-hidden="true">↗</span></button>
-      </div>
-      <p class="source-note">Includes the extracted questions and an answer key. A few source items have ambiguous or incomplete wording; those are identified in the review.</p>
-    </section>
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Language Aspects Quiz</title>
+<script>
+(function(){var t=null;try{t=localStorage.getItem('pal-theme')}catch(e){}
+if(!t)t=window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t)})();
+</script>
+<style>
+:root{--fs:1;color-scheme:light;--ink:#17233b;--muted:#65738b;--line:#dfe6f0;--paper:#fff;--bg:#f4f7fb;--blue:#3459d5;--blue-dark:#2444b5;--blue-soft:#edf1ff;--on:#fff;--green:#16794d;--green-bg:#e8f7ef;--green-ink:#145e3c;--gb:#8fd0ad;--red:#bd3844;--red-bg:#fff0f0;--red-ink:#9c2732;--rb:#e7a0a5;--panel:rgba(255,255,255,.94);--chip:#f2f5fb;--hover:#fafbff;--nbg:#fff9e9;--nink:#6d5725;--shadow:0 18px 55px rgba(34,53,92,.09);--mark:#ffe58a;--glow:radial-gradient(ellipse at 12% 0%,#e9efff 0,transparent 42%);--oink:#35435d;--bar:rgba(244,247,251,.92)}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#e8ecf6;--muted:#9aa6bd;--line:#2c3547;--paper:#1b2130;--bg:#10141d;--blue:#7f97ff;--blue-dark:#9cb0ff;--blue-soft:#232c4d;--on:#0f1220;--green:#4ade80;--green-bg:#14301f;--green-ink:#8be0ae;--gb:#2f7a4f;--red:#f87171;--red-bg:#3a1d21;--red-ink:#fca5a5;--rb:#8b3a41;--panel:rgba(27,33,48,.94);--chip:#252c3d;--hover:#212940;--nbg:#2e2815;--nink:#e6cf8a;--shadow:0 18px 55px rgba(0,0,0,.35);--mark:#6b5a10;--glow:radial-gradient(ellipse at 12% 0%,#1a2240 0,transparent 42%);--oink:#cdd5e6;--bar:rgba(16,20,29,.92)}
+*{box-sizing:border-box}html{font-size:calc(16px*var(--fs))}
+body{margin:0;background:var(--glow),var(--bg);color:var(--ink);font:1rem/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}[hidden]{display:none!important}
+.shell{width:min(100% - 32px,1020px);margin:0 auto;padding:0 0 64px}
+.topline{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;background:var(--bar);backdrop-filter:blur(10px)}
+.tb{display:flex;gap:6px;flex:none}
+.ib{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:11px;padding:0}
+.ib:hover{border-color:var(--blue);color:var(--blue)}.ib.on{background:var(--blue);border-color:var(--blue);color:var(--on)}.ib:disabled{opacity:.4;cursor:default}
+.ib svg,.ic svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic{display:inline-flex;vertical-align:-4px;margin-right:4px}.ic svg{width:1.1em;height:1.1em}
+#pExit{display:none}.ib.on #pUser{display:none}.ib.on #pExit{display:block}#sun{display:none}:root[data-theme="dark"] #sun{display:block}:root[data-theme="dark"] #moon{display:none}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+.pad{padding:clamp(20px,4vw,34px)}
+.start{padding:clamp(24px,5vw,56px)}.eyebrow{margin:0 0 10px;color:var(--blue);font-size:.78rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+h1{max-width:720px;margin:0;font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;letter-spacing:-.045em;user-select:none}h2{margin:0;font-size:1.3rem;letter-spacing:-.025em}
+.intro{max-width:650px;margin:17px 0 28px;color:var(--muted);font-size:1.04rem}
+.variant-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.mode{min-height:92px;display:flex;align-items:center;justify-content:space-between;text-align:left;gap:18px;padding:18px 20px;border:1px solid var(--line);border-radius:17px;background:var(--paper);color:var(--ink);transition:border-color .15s,transform .15s,box-shadow .15s}
+.mode:hover:not(:disabled),.mode:focus-visible{outline:none;border-color:#9aabf3;transform:translateY(-2px);box-shadow:0 10px 24px #3459d51a}.mode:disabled{opacity:.5;cursor:default}
+.mode strong{display:block;font-size:1.03rem}.mode small{display:block;color:var(--muted);margin-top:3px}
+.mode-icon{flex:none;width:37px;height:37px;display:grid;place-items:center;border-radius:12px;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:.85rem}
+.mode.wide{grid-column:1/-1;background:linear-gradient(105deg,var(--blue-soft),var(--paper));border-color:#ccd5fb}
+.rand{grid-column:1/-1;border:1px solid var(--line);border-radius:17px;padding:18px 20px;background:var(--paper)}
+.rand strong{display:block;font-size:1.03rem}.rand small{color:var(--muted)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+input[type=number],input[type=text],input[type=search],input[type=password],textarea,select{font:inherit;padding:11px 13px;border:2px solid var(--line);border-radius:11px;background:var(--bg);color:var(--ink);outline:none}
+input[type=number]{width:100px}input[type=text],input[type=search],input[type=password],textarea,select{width:100%}
+input:focus,textarea:focus,select:focus{border-color:var(--blue)}textarea{resize:vertical;min-height:80px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{background:var(--blue-soft);color:var(--blue);border:0;border-radius:8px;padding:5px 12px;font-weight:700}.chip.on{background:var(--blue);color:var(--on)}
+.err{color:var(--red);font-size:.9rem;min-height:1.3em;margin-top:6px}.msg{min-height:1.3em;margin-top:8px;font-size:.9rem;color:var(--green)}
+.opt-line{display:flex;gap:8px;align-items:center;margin-top:18px;color:var(--muted);font-size:.92rem}
+.source-note{margin:22px 0 0;color:var(--muted);font-size:.83rem}
+.primary{border:0;border-radius:12px;padding:12px 19px;background:var(--blue);color:var(--on);font-weight:800;box-shadow:0 6px 15px #3459d533}.primary:hover{background:var(--blue-dark)}.primary:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
+.secondary{border:0;border-radius:12px;padding:12px 19px;background:var(--blue-soft);color:var(--blue);font-weight:800}.secondary:disabled{opacity:.5;cursor:default}
+.sm{padding:8px 14px;font-size:.9rem}.danger{color:var(--red)}
+.quiz-head{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin:4px 0 16px}
+.quiz-title{display:flex;align-items:center;gap:13px;min-width:0}.quiz-title .eyebrow{margin-bottom:2px}.quiz-title h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.head-actions{display:flex;align-items:center;gap:10px;flex:none}.pill{padding:8px 12px;background:var(--chip);border-radius:999px;color:var(--muted);font-size:.84rem;font-weight:700;white-space:nowrap}
+.link-button{border:0;background:none;color:var(--blue);font-weight:750;padding:9px 4px}.link-button:hover{text-decoration:underline}
+.progress-wrap{height:7px;margin:0 3px 14px;background:var(--line);border-radius:99px;overflow:hidden}.progress{height:100%;width:0;background:linear-gradient(90deg,#6378ed,#3459d5);border-radius:inherit;transition:width .2s}
+.dots{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px}
+.dot{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--muted);font-size:.75rem;padding:0}
+.dot.a{background:var(--blue-soft);color:var(--blue);border-color:var(--blue)}.dot.ok{background:var(--green);color:var(--on);border-color:var(--green)}.dot.no{background:var(--red);color:var(--on);border-color:var(--red)}
+.dot.c{outline:2px solid var(--blue);outline-offset:1px}
+.question-list{display:grid;gap:15px}
+.question{padding:22px 24px;border:1px solid var(--line);border-radius:19px;background:var(--paper);box-shadow:0 6px 18px rgba(34,53,92,.035);scroll-margin-top:90px}
+.question.current{border-color:var(--blue);box-shadow:0 0 0 3px color-mix(in srgb,var(--blue) 22%,transparent)}
+.q-top{display:flex;gap:12px;align-items:flex-start}.q-number{flex:none;width:33px;height:33px;display:grid;place-items:center;border-radius:11px;background:var(--blue-soft);color:var(--blue);font-size:.86rem;font-weight:850}
+.q-prompt{margin:3px 0 15px;font-weight:750;font-size:1.04rem;line-height:1.45}.q-origin{display:inline-block;margin-left:8px;vertical-align:2px;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-left:45px}
+.option{display:flex;align-items:flex-start;gap:10px;min-height:45px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--oink);cursor:pointer;transition:background .12s,border-color .12s}
+.option:hover{border-color:#aab8ed;background:var(--hover)}.option input{flex:none;margin:4px 0 0;accent-color:var(--blue)}
+.option .letter{color:var(--muted);font-size:.83rem;font-weight:800}.option .opt-text{font-size:.94rem;line-height:1.4}
+.option:has(input:checked){border-color:var(--blue);background:var(--blue-soft)}
+.option.correct{border-color:var(--gb);background:var(--green-bg);color:var(--green-ink)}.option.incorrect{border-color:var(--rb);background:var(--red-bg);color:var(--red-ink)}
+.option:has(input:disabled){cursor:default}
+.question.result-correct{border-color:var(--gb)}.question.result-wrong{border-color:var(--rb)}
+.feedback{margin:13px 0 0 45px;padding:10px 12px;border-radius:11px;background:var(--chip);color:var(--muted);font-size:.88rem}.feedback.good{background:var(--green-bg);color:var(--green-ink)}.feedback.bad{background:var(--red-bg);color:var(--red-ink)}
+.note{margin:9px 0 0 45px;padding:10px 12px;border-left:3px solid #e5b24d;border-radius:0 9px 9px 0;background:var(--nbg);color:var(--nink);font-size:.85rem}
+.footer-actions{position:sticky;bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-radius:17px;box-shadow:0 8px 25px rgba(34,53,92,.1);backdrop-filter:blur(12px)}
+.helper{color:var(--muted);font-size:.88rem}
+.result-banner{margin-bottom:18px;padding:24px 27px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.result-score{font-size:1.75rem;font-weight:850;letter-spacing:-.04em}.result-caption{color:var(--muted)}.rb-actions{display:flex;gap:10px;flex-wrap:wrap}
+.mu{color:var(--muted);font-size:.9rem}.empty{text-align:center;color:var(--muted);padding:30px 0}
+.fl{display:block;margin-top:16px;font-weight:600;font-size:.95rem}.fl input,.fl textarea,.fl select{margin-top:6px}
+.who{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.av{width:56px;height:56px;border-radius:50%;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;flex:none}
+.ph{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.ph>div:nth-child(2){flex:1;min-width:140px}.ph h1{font-size:1.5rem;letter-spacing:-.02em}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.kp div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}.kp b{display:block;font-size:1.3rem}.kp span{font-size:.8rem;color:var(--muted)}
+.sc{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.9rem}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--muted);font-weight:600;font-size:.8rem;background:var(--bg)}tr:last-child td{border-bottom:0}
+.sp{display:inline-block;border-radius:999px;padding:1px 10px;font-weight:700;font-size:.85rem}.sp.ok{background:var(--green-bg);color:var(--green)}.sp.no{background:var(--red-bg);color:var(--red)}.sp.mid{background:var(--blue-soft);color:var(--blue)}
+.prow,.arow{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.prow>div:first-child{flex:1;min-width:0}.prow b{display:block;overflow:hidden;text-overflow:ellipsis}
+.arow{cursor:pointer}.arow:hover{border-color:var(--blue)}.arow .at{flex:1;min-width:0}
+.aq{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:600;font-size:.95rem}
+.num{display:inline-block;background:var(--blue);color:var(--on);border-radius:7px;padding:0 8px;font-size:.8rem;font-weight:700;flex:none;white-space:nowrap}
+.tag{font-size:.75rem;background:var(--blue-soft);color:var(--blue);border-radius:6px;padding:1px 7px;margin-right:4px;white-space:nowrap}.tag.mod{background:var(--red-bg);color:var(--red)}.tag.nw{background:var(--green-bg);color:var(--green)}
+h2.sec{margin:24px 0 10px;font-size:1.05rem}
+.abar{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.anote{margin-top:10px;font-size:.85rem;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.eo{border:1px solid var(--line);border-radius:12px;padding:4px 12px 12px;margin-top:12px}.ck{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:.92rem}
+.so{padding:7px 12px;border:1px solid var(--line);border-radius:8px;margin-top:6px;font-size:.95rem}.so.ok{background:var(--green-bg);border-color:var(--gb);color:var(--green-ink);font-weight:600}.so.hit{outline:2px solid var(--blue)}
+mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
+.ib.fl2{width:36px;height:36px;flex:none}
+.upd{display:flex;gap:12px;align-items:flex-start;background:var(--blue-soft);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:12px 14px;margin-bottom:18px}
+.upd-ic{flex:none;display:inline-flex;margin-top:2px;color:var(--blue)}.upd-ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.upd-body{flex:1;min-width:0;font-size:.92rem}.upd-top{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.upd-top b{color:var(--blue)}.upd-top span{color:var(--muted);font-size:.8rem}
+.upd-text{margin-top:2px;white-space:pre-line;overflow-wrap:anywhere}
+.upd-x{width:30px;height:30px;flex:none;border-radius:8px}.upd-x svg{width:16px;height:16px}
+@media(max-width:680px){.shell{width:min(100% - 20px,1020px)}.start{padding:24px 18px}.variant-grid{grid-template-columns:1fr}.mode.wide,.rand{grid-column:auto}.quiz-head{padding:16px;align-items:flex-start}.head-actions{flex-direction:column;align-items:flex-end;gap:2px}.question{padding:18px 15px}.options{grid-template-columns:1fr;margin-left:0}.q-prompt{font-size:1rem}.feedback,.note{margin-left:0}.footer-actions{bottom:7px;padding:11px 12px}.helper{max-width:52%;font-size:.8rem}.result-banner{padding:19px}}
+</style></head><body><main class="shell">
 
-    <section id="quizScreen" class="hidden" aria-label="Quiz">
-      <header class="panel quiz-head">
-        <div class="quiz-title"><span class="mark" aria-hidden="true">L</span><div><p id="modeLabel" class="eyebrow">Quiz</p><h2 id="quizHeading">Variant I</h2></div></div>
-        <div class="head-actions"><span id="answeredCount" class="pill">0 answered</span><button id="homeButton" class="link-button" type="button">Change mode</button></div>
-      </header>
-      <div class="progress-wrap" aria-label="Answered questions"><div id="progressBar" class="progress"></div></div>
-      <div id="resultBanner" class="panel result-banner hidden" role="status" aria-live="polite"></div>
-      <div id="questionList" class="question-list"></div>
-      <div class="footer-actions">
-        <span id="footerHelper" class="helper">Choose one answer for each question.</span>
-        <button id="submitButton" class="primary" type="button">Submit answers</button>
-      </div>
-    </section>
-  </main>
+<div class="topline">
 
-  <script>
-    // Each answer index is zero-based: 0=A, 1=B, 2=C, 3=D. Multiple indices
-    // are accepted where the source question has more than one defensible answer.
-    const variants = {
-      "I": [
-        {q:"Choose the correct form. Winning a lot of money ___ misery is actually a myth.",o:["results in","is caused by","causes","leads to"],a:[0,2,3],n:"The source sentence is incomplete and three options form plausible causative phrases. A, C, and D are accepted; C is the most direct intended choice."},
-        {q:"Choose the correct travel expression. If a train is ___ on time, it arrives at the expected time.",o:["making","running","going","taking"],a:[1]},
-        {q:"Choose the correct expression. Which phrase means that something was a habit in the past but is not true now?",o:["get used to","be used to","usually","used to"],a:[3]},
-        {q:"Choose the correct form. I’ll never forget the time I ___ my leg.",o:["was used to breaking","broke","would break","used to break"],a:[1]},
-        {q:"Choose the best answer. They won’t ___ you park there.",o:["force","let","suppose","allowing"],a:[1]},
-        {q:"Choose the word that best matches the definition. “The position of a building” is its:",o:["feature","structure","setting","outskirts"],a:[2]},
-        {q:"Choose the correct form. I’ll never forget ___ that tune for the first time.",o:["hear","to hear","hearing","heard"],a:[2]},
-        {q:"Choose the word that best matches the definition. Someone expecting the future to be good is:",o:["optimistic","pessimistic","cautious","realistic"],a:[0]},
-        {q:"Choose the best reply. “That’s not a ___ idea.”",o:["bad","worth","risk","chance"],a:[0]},
-        {q:"Choose the word that best matches the definition. “Very difficult because the training is thorough and detailed” means:",o:["relaxed","rigorous","easy","ordinary"],a:[1]},
-        {q:"Choose the correct preposition. They measured how happy people are as a result ___ winning the lottery.",o:["from","to","on","of"],a:[3]},
-        {q:"Choose the word that best fits. I hope it won’t ___ our friendship.",o:["result","lead","effect","affect"],a:[3]},
-        {q:"Choose the correct meaning. Future continuous describes:",o:["an activity in progress around a particular future time","an action completed before now","a general fact","a past state"],a:[0]},
-        {q:"Choose the correct form. I tried ___ to him, but he didn’t answer his phone.",o:["talked","to talk","talk","talking"],a:[1,3],n:"Both “tried to talk” (attempted) and “tried talking” (tested that approach) are grammatical here."},
-        {q:"Choose the correct meaning. Which expression means “cause something to happen”?",o:["effect on","lead to","be caused by","as a result of"],a:[1]},
-        {q:"Choose the word that best fits. Hundreds of villagers’ lives were saved as a ___ of the government’s help.",o:["result","cause","effect","lead"],a:[0]},
-        {q:"Choose the correct expression. Which phrase means “in my opinion”?",o:["as a whole","as follows","as far as I know","as far as I’m concerned"],a:[3]},
-        {q:"Choose the correct word. They were exhausted by the time they got there and not in the mood for ___.",o:["setting","feature","trekking","structure"],a:[2]},
-        {q:"Choose the best answer. We ___ to change our password straight away.",o:["couldn’t","didn’t need","had","were allowed"],a:[2]},
-        {q:"Choose the best answer. I was ___ to give the money back, but I forgot.",o:["supposed","able","allowed","let"],a:[0]},
-        {q:"Choose the correct verb form. She wants ___ for an aid organisation.",o:["worked","working","work","to work"],a:[3]},
-        {q:"Choose the correct form. I think I ___ similar things every day.",o:["will have done","will be doing","did","have done"],a:[1]},
-        {q:"Choose the correct verb form. I worry too much about ___ mistakes.",o:["to make","make","made","making"],a:[3]},
-        {q:"Choose the best answer. If something is very unlikely, which is suitable?",o:["We probably won’t go.","There’s a good chance we’ll go.","We are bound to go.","We will certainly go."],a:[0]},
-        {q:"Choose the correct collocation. ___ warming",o:["rough","global","solar","environmentally"],a:[1]},
-        {q:"Choose the best response. Which response is cautious rather than enthusiastic?",o:["What a brilliant idea!","Mm, I don’t know about that.","Yes, good idea.","That’s a great idea!"],a:[1]},
-        {q:"Choose the correct form. I tried ___ to him, but he’s still angry.",o:["talked","to talk","talking","talk"],a:[1,2],n:"Both “tried to talk” and “tried talking” are grammatical, with different nuances."},
-        {q:"Choose the correct word. A person who travels for pleasure is a:",o:["volunteer","tourist","manager","researcher"],a:[1]},
-        {q:"Choose the grammatically correct sentence. Which sentence correctly uses used to for a past state?",o:["I was used to be good at maths.","I would be good at maths.","I used to be good at maths.","I use to be good at maths."],a:[2]},
-        {q:"Choose the best answer. I’m ___ to give the money back, but I don’t want to.",o:["let","forced","supposed","allowed"],a:[2]}
-      ],
-      "II": [
-        {q:"Choose the correct form. It’s normal for me now; I ___ the job.",o:["used to","am used to","use to","would"],a:[1]},
-        {q:"Choose the correct verb form. She doesn’t expect ___ much money.",o:["earned","earning","to earn","earn"],a:[2]},
-        {q:"Choose the best answer. If the probability is around 50%, which is suitable?",o:["There’s no chance we’ll go.","We might go.","We will certainly go.","We certainly won’t go."],a:[1]},
-        {q:"Choose the best answer. The Optimism Bias can sometimes lead people to make:",o:["perfect decisions","only financial decisions","bad decisions","no decisions"],a:[2]},
-        {q:"Choose the best reply. “That might be ___ a try.”",o:["worth","possibility","bad","cautious"],a:[0]},
-        {q:"Choose the correct use. “I’ll be getting up at 4 am every day” describes:",o:["a completed future action","a future routine","a past habit","a present fact"],a:[1]},
-        {q:"Choose the correct form. I ___ have a dog, but he died about five years ago.",o:["used to","was used to","would","use"],a:[0]},
-        {q:"Choose the correct passive form. The local people are angry because these old trees ___ next week.",o:["are going to be cut down","have cut down","will cut down","are going to cut down"],a:[0]},
-        {q:"Choose the correct form to complete the sentence. When I was young, we’d ___ the whole summer playing in the fields.",o:["spent","spending","spend","to spend"],a:[2]},
-        {q:"Choose the best adjective. Uruapan has really ___ scenery.",o:["uninspiring","dull","ordinary","remarkable"],a:[3]},
-        {q:"Choose the best reply. “Or readings. Have poetry readings.” “Yeah, that’s a ___.”",o:["possibility","cautious","risk","bad"],a:[0]},
-        {q:"Choose the passive sentence. Choose the correct passive of “I wrote that report.”",o:["That report is writing by me.","That report was written by me.","That report wrote me.","I was written by that report."],a:[1]},
-        {q:"Choose the best answer. Yes, it’s OK. You ___ go home.",o:["have to","mustn’t","can","cannot"],a:[2]},
-        {q:"Choose the best answer. You ___ remove your helmet. It’s dangerous.",o:["mustn’t","should","don’t have to","can"],a:[0]},
-        {q:"Choose the correct collocation. ___ change",o:["carbon","solar","climate","fragile"],a:[2]},
-        {q:"Choose the word that best matches the definition. “Extremely tiring and difficult” means:",o:["easy","gruelling","ordinary","light"],a:[1]},
-        {q:"Choose the expression that is most enthusiastic. Which is the most enthusiastic?",o:["Yes, that makes sense.","Mm, I don’t know about that.","It’s an idea, I suppose.","What a brilliant idea!"],a:[3]},
-        {q:"Choose the correct collocation. ___ friendly",o:["fragile","ecological","environmentally","climate"],a:[2]},
-        {q:"Choose the correct verb form. Look both ways when ___ the road.",o:["cross","crossed","crossing","to cross"],a:[2]},
-        {q:"When I was a child, I ___ like vegetables, but now I love them.",o:["used to","use to","would","am used to"],a:[0]},
-        {q:"Choose the best adjective. If you want to see something original and ___, go to Kizhi Island.",o:["dull","ordinary","common","unique"],a:[3]},
-        {q:"Choose the adjective with a neutral/ordinary meaning. Which adjective means not special?",o:["mind-blowing","ordinary","fabulous","awe-inspiring"],a:[1]},
-        {q:"Choose the best adjective. Ha Long Bay has ___ islands made of limestone.",o:["dull","astonishing","uninspiring","ordinary"],a:[1]},
-        {q:"Choose the correct word. A place where tourists stay is:",o:["accommodation","feature","atmosphere","outskirts"],a:[0]},
-        {q:"Choose the correct form. ___ refers to things we weren’t able to do in the past.",o:["might not","probably won’t","may not","couldn’t"],a:[3]},
-        {q:"Choose the best expression. Which expression means an event is impossible or has a 0% chance?",o:["We could …","There’s a good chance that …","It’s likely that …","There’s no chance that …"],a:[3]},
-        {q:"Choose the word that best matches the definition. “Things that you build” are:",o:["settings","structures","outskirts","features"],a:[1]},
-        {q:"Choose the best answer. I think you ___ give the money back.",o:["don’t have to","should","can’t","mustn’t"],a:[1]},
-        {q:"Choose the adjective with a negative meaning. Which adjective is negative?",o:["out of this world","awesome","uninspiring","awe-inspiring"],a:[2]},
-        {q:"Choose the best answer. We ___ go out on Friday. (= Perhaps we won’t.)",o:["mustn’t","can’t have","may not","couldn’t"],a:[2]}
-      ],
-      "III": [
-        {q:"Choose the correct collocation. ___ energy",o:["solar","rough","carbon","global"],a:[0]},
-        {q:"Choose the word that best fits. Smoking can ___ cancer.",o:["affect","cause","effect","result"],a:[1]},
-        {q:"Choose the word that best matches the definition. Someone not seeing things as they are may be:",o:["cautious","unrealistic","realistic","certain"],a:[1]},
-        {q:"Choose the correct form. Which sentence is NOT correct?",o:["I didn’t used to like jazz.","I didn’t use to like jazz.","I used to live here.","Did you use to live here?"],a:[0]},
-        {q:"Choose the correct meaning. Future perfect describes:",o:["a past habit","an action happening now","an action expected to be completed before a specific future time","a present state"],a:[2]},
-        {q:"Choose the correct form to complete the sentence. When I was young, we never ___ go on holidays.",o:["are used to","used to","use","would to"],a:[1]},
-        {q:"Choose the correct form. I’m looking forward to ___ you.",o:["seeing","to see","saw","see"],a:[0]},
-        {q:"Choose the best answer. We ___ go out on Friday. (= Perhaps we won’t.)",o:["needn’t","couldn’t","might not","mustn’t"],a:[2]},
-        {q:"Choose the adjective with a positive meaning. Which adjective is positive?",o:["ordinary","awesome","disappointing","dull"],a:[1]},
-        {q:"Choose the correct expression. If a flight stops in another city for a while, you:",o:["head up","stop over","turn up","put up"],a:[1]},
-        {q:"Choose the correct tense. “I’ll still be driving home at 5 pm” uses:",o:["past continuous","future perfect","future continuous","present continuous"],a:[2]},
-        {q:"Choose the best expression. Which expression means something is possible but not certain?",o:["It will certainly …","It’s certain that …","There’s no chance that …","There’s a good chance that …"],a:[3]},
-        {q:"Choose the correct form. This small pot ___ to me by my great-grandfather.",o:["was giving","was given","has give","gave"],a:[1]},
-        {q:"Choose the word that best fits. Borrowing large amounts of money can ___ in serious financial problems.",o:["result","cause by","effect on","affect"],a:[0]},
-        {q:"Choose the correct form. I hope ___ you.",o:["to see","see","saw","seeing"],a:[0]},
-        {q:"Choose the word that best fits. Getting married has had a positive ___ on him.",o:["affect","cause","result","effect"],a:[3]},
-        {q:"Choose the correct form to express purpose. We’re going to the beach ___ in the sun.",o:["lie","lay","to lie","lying"],a:[2]},
-        {q:"Choose the best answer. You ___ tell anyone else your password.",o:["can","must not","don’t have to","are allowed to"],a:[1]},
-        {q:"Choose the correct verb form. They escaped by ___ a tunnel under the wall.",o:["to dig","digging","dig","dug"],a:[1]},
-        {q:"Choose the correct form. After be/get used to, we use a ___ or a noun phrase.",o:["gerund","past simple","modal verb","past participle only"],a:[0]},
-        {q:"Choose the correct adjective. They’re ___ to be late. (= I’m sure they’ll be late.)",o:["unlikely","sure","possible","doubtful"],a:[1]},
-        {q:"Choose the correct form. By the time they get here, we ___.",o:["will be finish","will finishing","have finishing","will have finished"],a:[3]},
-        {q:"Choose the correct passive form. I promise that you ___ as soon as your bags arrive.",o:["will be informing","will inform","will be informed","are inform"],a:[2]},
-        {q:"Choose the best answer. Travelling by train is more ___ than going by plane.",o:["fragile","environmentally friendly","global warming","carbon footprint"],a:[1]},
-        {q:"Choose the best answer. We ___ go out on Friday. (= Perhaps we’ll go.)",o:["won’t","could","can’t","mustn’t"],a:[1]},
-        {q:"Choose the correct travel expression. To go somewhere for a couple of weeks means to go:",o:["down","across","away","out"],a:[2]},
-        {q:"Choose the best adjective. The islands are really ___.",o:["unremarkable","dull","ordinary","breathtaking"],a:[3]},
-        {q:"Choose the best answer. You ___ buy a ticket. Entry is free.",o:["are supposed to","have to","don’t have to","mustn’t"],a:[2]},
-        {q:"Choose the correct form. I watched the people ___.",o:["walking around","to walk around","walked around","walk"],a:[0]},
-        {q:"Choose the correct word. It’s one of the oldest cities in Mexico, with waterfalls on the ___ of the city.",o:["setting","structure","feature","outskirts"],a:[3]}
-      ],
-      "IV": [
-        {q:"Choose the correct expression. A tourist may visit a famous place as a main:",o:["attraction","obligation","probability","permission"],a:[0]},
-        {q:"Choose the correct word. Spending money on experiences usually ___ longer-term happiness.",o:["results from","results in","causes by","affects to"],a:[1]},
-        {q:"Choose the correct form. I stopped ___ coffee. (= I stopped because I wanted to drink coffee.)",o:["to drink","drinking","drank","drink"],a:[0]},
-        {q:"Choose the best answer. Which sentence expresses certainty?",o:["We may go.","We could go.","We might go.","We will go."],a:[3]},
-        {q:"Choose the correct collocation. ___ footprint",o:["rough","carbon","solar","fragile"],a:[1]},
-        {q:"Choose the best answer. Which modal expresses a possible future event?",o:["had to","mustn’t","couldn’t","might"],a:[3]},
-        {q:"Choose the word that best matches the definition. “Just before the city ends and the countryside begins” means:",o:["structure","setting","feature","outskirts"],a:[3]},
-        {q:"Choose the best answer. They ___ me give them my phone.",o:["let","supposed","allowed","forced"],a:[0],n:"“Let me give” is the only option that is grammatical as printed. If coercion was intended, the sentence needs “forced me to give.”"},
-        {q:"Choose the best answer. I ___ go home early yesterday.",o:["have to","am allowed","must","could"],a:[3]},
-        {q:"Choose the correct collocation. ___ environment",o:["carbon","global","fragile","solar"],a:[2]},
-        {q:"Choose the correct passive form. When we got to the cinema, all the best tickets ___.",o:["were selling","have sold","had sold","had been sold"],a:[3]},
-        {q:"Choose the correct form. By the time I arrive, the penguins ___ into pairs.",o:["will already have got","got","already get","will be getting"],a:[0]},
-        {q:"Choose the best answer. We ___ remove our helmets. The instructor says so.",o:["didn’t have to","were supposed","weren’t allowed to","could"],a:[1,3],n:"The wording is ambiguous: “were supposed to” expresses an expectation, while “could” expresses permission. The tense in the source also shifts; both are accepted."},
-        {q:"Choose the correct form. Apparently it ___ in the desert by an Egyptian farmer.",o:["discovered","was discovered","has discover","is discovering"],a:[1]},
-        {q:"Choose the correct passive form. These words ___ thousands of years ago.",o:["wrote","were written","are writing","have write"],a:[1]},
-        {q:"Choose the correct form. I could smell something ___.",o:["to burn","burn","burning","burned"],a:[2]},
-        {q:"Choose the correct position. Choose the correct sentence.",o:["Probably it’ll be a nice day always.","It’ll probably be a nice day.","It probably’ll be a nice day.","It’ll be probably a nice day."],a:[1]},
-        {q:"Choose the phrase with a very positive meaning. Which phrase means extremely impressive?",o:["out of this world","a little dull","ordinary","uninspiring"],a:[0]},
-        {q:"Choose the best answer. We were ___ to choose our own passwords.",o:["must","allowed","forced","supposed"],a:[1,2,3],n:"“Allowed,” “forced,” and “supposed” are all grammatical; each gives a different meaning. The source gives no context to select only one."},
-        {q:"Choose the correct form. After explaining the theory, I’ll go on ___ some examples.",o:["describe","to describe","described","describing"],a:[1]},
-        {q:"Choose the correct passive form. The thief ___ yet.",o:["has not caught","is not catching","was not catch","has not been caught"],a:[3]},
-        {q:"Choose the passive sentence. Choose the correct passive of “Someone had already built this bridge.”",o:["This bridge already built someone.","This bridge was already building.","Someone was already built by this bridge.","This bridge had already been built."],a:[3]},
-        {q:"Choose the grammatically correct sentence. Which sentence correctly uses would for a past habit?",o:["We would live in London.","We would have a dog.","We would be good friends.","We would talk for hours every day."],a:[3]},
-        {q:"Choose the correct collocation. The Earth’s ___",o:["friendly","atmosphere","energy","footprint"],a:[1]},
-        {q:"Choose the best answer. It ___ to contain at least 20 characters.",o:["was allowed","could","didn’t have","had"],a:[3]},
-        {q:"Choose the correct word. The most amazing ___ you can see here is the nearby volcano.",o:["setting","outskirts","feature","structure"],a:[2]},
-        {q:"Choose the correct question. ___ you use to live in London?",o:["Would","Were","Do","Did"],a:[3]},
-        {q:"Choose the correct passive form. The first email between two organisations ___ in 1971.",o:["is sending","was sent","has send","sent"],a:[1]},
-        {q:"Choose the expression that is most cautious. Which is the most cautious?",o:["Yes, good idea.","What a brilliant idea!","It’s an idea, I suppose.","That’s a great idea!"],a:[2]},
-        {q:"Choose the correct passive form. Currently, English ___ as an official language in almost 60 countries.",o:["uses","has use","is used","was used"],a:[2]}
-      ]
-    };
+<div class="tb">
+<button class="ib" id="bProfile" aria-label="Student profile"><svg id="pUser" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><svg id="pExit" viewBox="0 0 24 24"><path d="M15 21h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-4"/><path d="m8 17-5-5 5-5"/><path d="M3 12h12"/></svg></button>
+<button class="ib" id="bSearch" aria-label="Search all questions"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+<button class="ib" id="fMinus" aria-label="Decrease font size"><svg viewBox="0 0 24 24"><path d="M3 18 8 6l5 12M5 14h6"/><path d="M16 12h6"/></svg></button>
+<button class="ib" id="fPlus" aria-label="Increase font size"><svg viewBox="0 0 24 24"><path d="M3 18 8 6l5 12M5 14h6"/><path d="M19 9v6M16 12h6"/></svg></button>
+<button class="ib" id="bTheme" aria-label="Toggle theme"><svg id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+</div></div>
 
-    const startScreen = document.getElementById('startScreen');
-    const quizScreen = document.getElementById('quizScreen');
-    const questionList = document.getElementById('questionList');
-    const answeredCount = document.getElementById('answeredCount');
-    const progressBar = document.getElementById('progressBar');
-    const submitButton = document.getElementById('submitButton');
-    const resultBanner = document.getElementById('resultBanner');
-    const footerHelper = document.getElementById('footerHelper');
-    let activeQuestions = [];
-    let activeMode = '';
-    let submitted = false;
+<section id="start" class="panel start">
+<div class="upd" id="siteNote" role="status" hidden>
+<span class="upd-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+<div class="upd-body"><div class="upd-top"><b>Update</b><span id="noteDate"></span></div><div class="upd-text" id="noteText"></div></div>
+<button class="ib upd-x" id="noteClose" type="button" aria-label="Dismiss"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</div>
+<div class="who" id="who"></div>
 
-    function shuffle(items){
-      for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]];}
-      return items;
-    }
-    function updateProgress(){
-      const answered=questionList.querySelectorAll('input[type="radio"]:checked').length;
-      answeredCount.textContent=`${answered} of ${activeQuestions.length} answered`;
-      progressBar.style.width=`${activeQuestions.length ? answered/activeQuestions.length*100 : 0}%`;
-    }
-    function buildQuestion(item,index){
-      const card=document.createElement('article');card.className='question';card.id=`question-${index}`;
-      const top=document.createElement('div');top.className='q-top';
-      const number=document.createElement('span');number.className='q-number';number.textContent=String(index+1);number.setAttribute('aria-hidden','true');
-      const body=document.createElement('div');body.style.flex='1';
-      const prompt=document.createElement('p');prompt.className='q-prompt';prompt.textContent=item.q;
-      if(activeMode==='mix'){const origin=document.createElement('span');origin.className='q-origin';origin.textContent=`Variant ${item.variant} · question ${item.originalNumber}`;prompt.append(origin);}
-      body.append(prompt);top.append(number,body);card.append(top);
-      const options=document.createElement('div');options.className='options';
-      item.o.forEach((text,i)=>{
-        const label=document.createElement('label');label.className='option';
-        const input=document.createElement('input');input.type='radio';input.name=`answer-${index}`;input.value=String(i);input.setAttribute('aria-label',`${String.fromCharCode(65+i)}. ${text}`);
-        const letter=document.createElement('span');letter.className='letter';letter.textContent=String.fromCharCode(65+i)+')';
-        const optionText=document.createElement('span');optionText.className='opt-text';optionText.textContent=text;
-        label.append(input,letter,optionText);options.append(label);
-      });
-      card.append(options);
-      if(item.n){const note=document.createElement('p');note.className='note';note.textContent=`Answer note: ${item.n}`;card.append(note);}
-      return card;
-    }
-    function begin(mode){
-      activeMode=mode;submitted=false;resultBanner.classList.add('hidden');questionList.replaceChildren();
-      const selected=mode==='mix'
-        ? Object.entries(variants).flatMap(([variant,items])=>items.map((item,i)=>({...item,variant,originalNumber:i+1})))
-        : variants[mode].map((item,i)=>({...item,variant:mode,originalNumber:i+1}));
-      activeQuestions=mode==='mix'?shuffle(selected):selected;
-      document.getElementById('modeLabel').textContent=mode==='mix'?'Mix / Shuffle':'Final exam practice';
-      document.getElementById('quizHeading').textContent=mode==='mix'?'All variants · shuffled':`Variant ${mode}`;
-      activeQuestions.forEach((item,index)=>questionList.append(buildQuestion(item,index)));
-      startScreen.classList.add('hidden');quizScreen.classList.remove('hidden');
-      submitButton.disabled=false;submitButton.textContent='Submit answers';footerHelper.textContent='Choose one answer for each question.';
-      updateProgress();window.scrollTo({top:0,behavior:'smooth'});
-    }
-    function submit(){
-      if(submitted)return;submitted=true;let score=0;
-      activeQuestions.forEach((item,index)=>{
-        const card=document.getElementById(`question-${index}`);const choices=[...card.querySelectorAll('input[type="radio"]')];
-        const picked=choices.findIndex(input=>input.checked);const correct=picked>=0&&item.a.includes(picked);if(correct)score++;
-        card.classList.add(correct?'result-correct':'result-wrong');
-        choices.forEach((input,i)=>{const label=input.closest('.option');input.disabled=true;if(item.a.includes(i))label.classList.add('correct');if(i===picked&&!correct)label.classList.add('incorrect');});
-        const feedback=document.createElement('p');feedback.className=`feedback ${correct?'good':'bad'}`;
-        const accepted=item.a.map(i=>`${String.fromCharCode(65+i)}) ${item.o[i]}`).join(' / ');
-        feedback.textContent=correct?`Correct. Accepted answer${item.a.length>1?'s':''}: ${accepted}.`:picked<0?`No answer selected. Accepted answer${item.a.length>1?'s':''}: ${accepted}.`:`Your answer: ${String.fromCharCode(65+picked)}) ${item.o[picked]}. Accepted answer${item.a.length>1?'s':''}: ${accepted}.`;
-        card.append(feedback);
-      });
-      const percent=Math.round(score/activeQuestions.length*100);
-      resultBanner.innerHTML='';
-      const left=document.createElement('div');const scoreEl=document.createElement('div');scoreEl.className='result-score';scoreEl.textContent=`${score} / ${activeQuestions.length}`;const caption=document.createElement('div');caption.className='result-caption';caption.textContent=`${percent}% correct · Review the highlighted answers below.`;left.append(scoreEl,caption);
-      const again=document.createElement('button');again.type='button';again.className='primary';again.textContent='Practice again';again.addEventListener('click',()=>begin(activeMode));
-      resultBanner.append(left,again);resultBanner.classList.remove('hidden');
-      submitButton.disabled=true;submitButton.textContent='Submitted';footerHelper.textContent=`Final score: ${score} of ${activeQuestions.length}.`;
-      answeredCount.textContent=`${activeQuestions.length} of ${activeQuestions.length} reviewed`;progressBar.style.width='100%';window.scrollTo({top:0,behavior:'smooth'});
-    }
-    document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>begin(button.dataset.mode)));
-    document.getElementById('homeButton').addEventListener('click',()=>{quizScreen.classList.add('hidden');startScreen.classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});});
-    submitButton.addEventListener('click',submit);
-    questionList.addEventListener('change',updateProgress);
-  </script>
-</body>
-</html>
+<h1 id="mainTitle">Choose a variant and begin.</h1>
+<p class="intro">Practise the exam questions by variant, shuffle all of them together, or build a random test of your own size. Answer options are shuffled every time.</p>
+<div class="variant-grid">
+<button class="mode" data-mode="I" id="vbI"><span><strong>Variant I</strong><small id="vcI"></small></span><span class="mode-icon" aria-hidden="true">I</span></button>
+<button class="mode" data-mode="II" id="vbII"><span><strong>Variant II</strong><small id="vcII"></small></span><span class="mode-icon" aria-hidden="true">II</span></button>
+<button class="mode" data-mode="III" id="vbIII"><span><strong>Variant III</strong><small id="vcIII"></small></span><span class="mode-icon" aria-hidden="true">III</span></button>
+<button class="mode" data-mode="IV" id="vbIV"><span><strong>Variant IV</strong><small id="vcIV"></small></span><span class="mode-icon" aria-hidden="true">IV</span></button>
+<button class="mode wide" data-mode="mix" id="vbMix"><span><strong>Mix / Shuffle</strong><small id="mixc"></small></span><span class="mode-icon" aria-hidden="true">All</span></button>
+<div class="rand"><strong>Custom random test</strong><small>Choose how many questions you want from the whole bank.</small>
+<div class="row"><input type="number" id="cnt" min="1" value="30" inputmode="numeric"><span class="mu" id="rng"></span><div class="chips" id="chips"></div></div>
+<div class="err" id="err"></div>
+<button class="primary" id="goRand">Start random test</button></div>
+</div>
+<label class="opt-line"><input type="checkbox" id="instant"> <span>Show the correct answer immediately after each answer</span></label>
+<p class="source-note">Includes the extracted questions and an answer key. A few source items have ambiguous or incomplete wording; those are explained in the review.</p>
+</section>
+
+<section id="quiz" hidden aria-label="Quiz">
+<header class="panel quiz-head">
+<div class="quiz-title"><div><p id="modeLabel" class="eyebrow">Quiz</p><h2 id="quizHeading"></h2></div></div>
+<div class="head-actions"><span id="answeredCount" class="pill"></span><button id="homeButton" class="link-button" type="button">Change mode</button></div>
+</header>
+<div class="progress-wrap"><div id="progressBar" class="progress"></div></div>
+<div class="dots" id="dots"></div>
+<div id="resultBanner" class="panel result-banner" role="status" aria-live="polite" hidden></div>
+<div id="questionList" class="question-list"></div>
+<div class="footer-actions"><span id="footerHelper" class="helper">Choose one answer for each question.</span><button id="submitButton" class="primary" type="button">Submit answers</button></div>
+</section>
+
+<section id="search" hidden>
+<input type="search" id="sq" placeholder="Search in all questions and options" autocomplete="off">
+<div class="mu" id="sinfo" style="margin:8px 0 12px;min-height:1.3em"></div>
+<div id="slist"></div>
+</section>
+
+<section id="setup" class="panel pad" hidden>
+<h1 id="setupTitle" style="font-size:1.8rem"></h1>
+<div class="mu" id="setupSub"></div>
+<label class="fl">Full name<input type="text" id="pName" maxlength="60" autocomplete="name" placeholder="Aliyev Vali"></label>
+<label class="fl">Academic group<input type="text" id="pGroup" maxlength="20" autocomplete="off" placeholder="XTA-26/5"></label>
+<div class="err" id="pErr"></div>
+<div class="row"><button class="primary" id="pSave">Save and continue</button><button class="secondary" id="pCancel" hidden>Cancel</button></div>
+</section>
+
+<section id="profile" hidden>
+<div class="panel pad">
+<div class="ph"><div class="av" id="pAv"></div><div><h1 id="pTitle"></h1><div class="mu" id="pGrp"></div></div><button class="secondary sm" id="pEdit">Edit profile</button></div>
+<div class="kp"><div><b id="kA"></b><span>Attempts</span></div><div><b id="kAvg"></b><span>Average</span></div><div><b id="kBest"></b><span>Best score</span></div></div>
+</div>
+<h2 class="sec">Test history</h2><div id="hist"></div>
+<button class="secondary sm" id="hClear" style="margin-top:10px" hidden>Clear history</button>
+<h2 class="sec">Profiles</h2><div id="plist"></div>
+<button class="secondary" id="pNew" style="width:100%;margin-top:4px">Add new profile</button>
+</section>
+
+<section id="admin" hidden>
+<div id="aGate" class="panel pad" hidden>
+<h2>Admin panel</h2>
+<label class="fl">PIN<input type="password" id="gIn" autocomplete="off"></label>
+<div class="err" id="gErr"></div>
+<div class="row"><button class="primary" id="gGo">Enter</button><button class="secondary" id="gExit">Exit admin</button></div>
+</div>
+<div id="aPanel">
+<div class="panel pad">
+<div class="row" style="justify-content:space-between;margin:0"><h2>Admin panel</h2><button class="secondary sm" id="aExit">Exit admin</button></div>
+<div class="mu" id="aSum" style="margin-top:6px"></div>
+<div class="anote">Changes are saved on this device only. To update the site for students, download the updated site and use it as index.html.</div>
+<div class="abar"><button class="primary sm" id="aAdd">Add question</button><button class="primary sm" id="aSite">Download updated site</button><button class="secondary sm" id="aExp">Export JSON</button><button class="secondary sm" id="aImp">Import JSON</button><button class="secondary sm" id="aRst">Restore original</button></div>
+<input type="file" id="aFile" accept=".json,application/json" hidden>
+<div class="msg" id="aMsg"></div>
+<div class="row" style="margin-top:6px"><input type="password" id="pinIn" placeholder="New PIN (4+ characters)" autocomplete="off" style="max-width:240px"><button class="secondary sm" id="pinSet">Set PIN</button><button class="secondary sm" id="pinOff" hidden>Remove PIN</button></div>
+</div>
+<div style="margin-top:14px"><input type="search" id="aSq" placeholder="Search questions and options to edit" autocomplete="off">
+<div class="chips" style="margin-top:8px"><button class="chip" data-af="all">All</button><button class="chip" data-af="mod">Modified</button><button class="chip" data-af="flag">To check</button></div></div>
+<div id="aList" style="margin-top:10px"></div>
+</div>
+</section>
+
+<section id="aedit" class="panel pad" hidden>
+<h1 id="eTitle" style="font-size:1.6rem"></h1>
+<label class="fl">Variant<select id="eV"><option>I</option><option>II</option><option>III</option><option>IV</option></select></label>
+<label class="fl">Question text<textarea id="eQ" rows="3"></textarea></label>
+<div class="eo"><label class="fl">Option A<input type="text" id="eO0" maxlength="400"></label><label class="ck"><input type="checkbox" id="eC0"> <span>Correct</span></label></div>
+<div class="eo"><label class="fl">Option B<input type="text" id="eO1" maxlength="400"></label><label class="ck"><input type="checkbox" id="eC1"> <span>Correct</span></label></div>
+<div class="eo"><label class="fl">Option C<input type="text" id="eO2" maxlength="400"></label><label class="ck"><input type="checkbox" id="eC2"> <span>Correct</span></label></div>
+<div class="eo"><label class="fl">Option D<input type="text" id="eO3" maxlength="400"></label><label class="ck"><input type="checkbox" id="eC3"> <span>Correct</span></label></div>
+
+<label class="fl">Answer note (optional, shown after submitting)<textarea id="eN" rows="2"></textarea></label>
+<div class="err" id="eErr"></div>
+<div class="abar"><button class="primary" id="eSave">Save</button><button class="primary" id="eSaveNext">Save and next</button><button class="secondary" id="eBack">Back to list</button></div>
+<div class="abar"><button class="secondary sm" id="eFlag"><span class="ic"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg></span>Mark for check</button><button class="secondary sm" id="eReset" hidden>Restore original</button><button class="secondary sm danger" id="eDel">Delete question</button></div>
+</section>
+</main>
+
+<!-- ===== UPDATE NOTE: edit this block to show a notice on the start page ===== -->
+<script id="noteData" type="application/json">
+{
+  "show": false,
+  "date": "",
+  "text": ""
+}
+</script>
+<script id="bankData" type="application/json">[{"id": "I1", "v": "I", "q": "Choose the correct form. Winning a lot of money ___ misery is actually a myth.", "o": ["results in", "is caused by", "causes", "leads to"], "c": [0, 2, 3], "note": "The source sentence is incomplete and three options form plausible causative phrases. A, C, and D are accepted; C is the most direct intended choice."}, {"id": "I2", "v": "I", "q": "Choose the correct travel expression. If a train is ___ on time, it arrives at the expected time.", "o": ["making", "running", "going", "taking"], "c": [1]}, {"id": "I3", "v": "I", "q": "Choose the correct expression. Which phrase means that something was a habit in the past but is not true now?", "o": ["get used to", "be used to", "usually", "used to"], "c": [3]}, {"id": "I4", "v": "I", "q": "Choose the correct form. I’ll never forget the time I ___ my leg.", "o": ["was used to breaking", "broke", "would break", "used to break"], "c": [1]}, {"id": "I5", "v": "I", "q": "Choose the best answer. They won’t ___ you park there.", "o": ["force", "let", "suppose", "allowing"], "c": [1]}, {"id": "I6", "v": "I", "q": "Choose the word that best matches the definition. “The position of a building” is its:", "o": ["feature", "structure", "setting", "outskirts"], "c": [2]}, {"id": "I7", "v": "I", "q": "Choose the correct form. I’ll never forget ___ that tune for the first time.", "o": ["hear", "to hear", "hearing", "heard"], "c": [2]}, {"id": "I8", "v": "I", "q": "Choose the word that best matches the definition. Someone expecting the future to be good is:", "o": ["optimistic", "pessimistic", "cautious", "realistic"], "c": [0]}, {"id": "I9", "v": "I", "q": "Choose the best reply. “That’s not a ___ idea.”", "o": ["bad", "worth", "risk", "chance"], "c": [0]}, {"id": "I10", "v": "I", "q": "Choose the word that best matches the definition. “Very difficult because the training is thorough and detailed” means:", "o": ["relaxed", "rigorous", "easy", "ordinary"], "c": [1]}, {"id": "I11", "v": "I", "q": "Choose the correct preposition. They measured how happy people are as a result ___ winning the lottery.", "o": ["from", "to", "on", "of"], "c": [3]}, {"id": "I12", "v": "I", "q": "Choose the word that best fits. I hope it won’t ___ our friendship.", "o": ["result", "lead", "effect", "affect"], "c": [3]}, {"id": "I13", "v": "I", "q": "Choose the correct meaning. Future continuous describes:", "o": ["an activity in progress around a particular future time", "an action completed before now", "a general fact", "a past state"], "c": [0]}, {"id": "I14", "v": "I", "q": "Choose the correct form. I tried ___ to him, but he didn’t answer his phone.", "o": ["talked", "to talk", "talk", "talking"], "c": [1, 3], "note": "Both “tried to talk” (attempted) and “tried talking” (tested that approach) are grammatical here."}, {"id": "I15", "v": "I", "q": "Choose the correct meaning. Which expression means “cause something to happen”?", "o": ["effect on", "lead to", "be caused by", "as a result of"], "c": [1]}, {"id": "I16", "v": "I", "q": "Choose the word that best fits. Hundreds of villagers’ lives were saved as a ___ of the government’s help.", "o": ["result", "cause", "effect", "lead"], "c": [0]}, {"id": "I17", "v": "I", "q": "Choose the correct expression. Which phrase means “in my opinion”?", "o": ["as a whole", "as follows", "as far as I know", "as far as I’m concerned"], "c": [3]}, {"id": "I18", "v": "I", "q": "Choose the correct word. They were exhausted by the time they got there and not in the mood for ___.", "o": ["setting", "feature", "trekking", "structure"], "c": [2]}, {"id": "I19", "v": "I", "q": "Choose the best answer. We ___ to change our password straight away.", "o": ["couldn’t", "didn’t need", "had", "were allowed"], "c": [2]}, {"id": "I20", "v": "I", "q": "Choose the best answer. I was ___ to give the money back, but I forgot.", "o": ["supposed", "able", "allowed", "let"], "c": [0]}, {"id": "I21", "v": "I", "q": "Choose the correct verb form. She wants ___ for an aid organisation.", "o": ["worked", "working", "work", "to work"], "c": [3]}, {"id": "I22", "v": "I", "q": "Choose the correct form. I think I ___ similar things every day.", "o": ["will have done", "will be doing", "did", "have done"], "c": [1]}, {"id": "I23", "v": "I", "q": "Choose the correct verb form. I worry too much about ___ mistakes.", "o": ["to make", "make", "made", "making"], "c": [3]}, {"id": "I24", "v": "I", "q": "Choose the best answer. If something is very unlikely, which is suitable?", "o": ["We probably won’t go.", "There’s a good chance we’ll go.", "We are bound to go.", "We will certainly go."], "c": [0]}, {"id": "I25", "v": "I", "q": "Choose the correct collocation. ___ warming", "o": ["rough", "global", "solar", "environmentally"], "c": [1]}, {"id": "I26", "v": "I", "q": "Choose the best response. Which response is cautious rather than enthusiastic?", "o": ["What a brilliant idea!", "Mm, I don’t know about that.", "Yes, good idea.", "That’s a great idea!"], "c": [1]}, {"id": "I27", "v": "I", "q": "Choose the correct form. I tried ___ to him, but he’s still angry.", "o": ["talked", "to talk", "talking", "talk"], "c": [1, 2], "note": "Both “tried to talk” and “tried talking” are grammatical, with different nuances."}, {"id": "I28", "v": "I", "q": "Choose the correct word. A person who travels for pleasure is a:", "o": ["volunteer", "tourist", "manager", "researcher"], "c": [1]}, {"id": "I29", "v": "I", "q": "Choose the grammatically correct sentence. Which sentence correctly uses used to for a past state?", "o": ["I was used to be good at maths.", "I would be good at maths.", "I used to be good at maths.", "I use to be good at maths."], "c": [2]}, {"id": "I30", "v": "I", "q": "Choose the best answer. I’m ___ to give the money back, but I don’t want to.", "o": ["let", "forced", "supposed", "allowed"], "c": [2]}, {"id": "II1", "v": "II", "q": "Choose the correct form. It’s normal for me now; I ___ the job.", "o": ["used to", "am used to", "use to", "would"], "c": [1]}, {"id": "II2", "v": "II", "q": "Choose the correct verb form. She doesn’t expect ___ much money.", "o": ["earned", "earning", "to earn", "earn"], "c": [2]}, {"id": "II3", "v": "II", "q": "Choose the best answer. If the probability is around 50%, which is suitable?", "o": ["There’s no chance we’ll go.", "We might go.", "We will certainly go.", "We certainly won’t go."], "c": [1]}, {"id": "II4", "v": "II", "q": "Choose the best answer. The Optimism Bias can sometimes lead people to make:", "o": ["perfect decisions", "only financial decisions", "bad decisions", "no decisions"], "c": [2]}, {"id": "II5", "v": "II", "q": "Choose the best reply. “That might be ___ a try.”", "o": ["worth", "possibility", "bad", "cautious"], "c": [0]}, {"id": "II6", "v": "II", "q": "Choose the correct use. “I’ll be getting up at 4 am every day” describes:", "o": ["a completed future action", "a future routine", "a past habit", "a present fact"], "c": [1]}, {"id": "II7", "v": "II", "q": "Choose the correct form. I ___ have a dog, but he died about five years ago.", "o": ["used to", "was used to", "would", "use"], "c": [0]}, {"id": "II8", "v": "II", "q": "Choose the correct passive form. The local people are angry because these old trees ___ next week.", "o": ["are going to be cut down", "have cut down", "will cut down", "are going to cut down"], "c": [0]}, {"id": "II9", "v": "II", "q": "Choose the correct form to complete the sentence. When I was young, we’d ___ the whole summer playing in the fields.", "o": ["spent", "spending", "spend", "to spend"], "c": [2]}, {"id": "II10", "v": "II", "q": "Choose the best adjective. Uruapan has really ___ scenery.", "o": ["uninspiring", "dull", "ordinary", "remarkable"], "c": [3]}, {"id": "II11", "v": "II", "q": "Choose the best reply. “Or readings. Have poetry readings.” “Yeah, that’s a ___.”", "o": ["possibility", "cautious", "risk", "bad"], "c": [0]}, {"id": "II12", "v": "II", "q": "Choose the passive sentence. Choose the correct passive of “I wrote that report.”", "o": ["That report is writing by me.", "That report was written by me.", "That report wrote me.", "I was written by that report."], "c": [1]}, {"id": "II13", "v": "II", "q": "Choose the best answer. Yes, it’s OK. You ___ go home.", "o": ["have to", "mustn’t", "can", "cannot"], "c": [2]}, {"id": "II14", "v": "II", "q": "Choose the best answer. You ___ remove your helmet. It’s dangerous.", "o": ["mustn’t", "should", "don’t have to", "can"], "c": [0]}, {"id": "II15", "v": "II", "q": "Choose the correct collocation. ___ change", "o": ["carbon", "solar", "climate", "fragile"], "c": [2]}, {"id": "II16", "v": "II", "q": "Choose the word that best matches the definition. “Extremely tiring and difficult” means:", "o": ["easy", "gruelling", "ordinary", "light"], "c": [1]}, {"id": "II17", "v": "II", "q": "Choose the expression that is most enthusiastic. Which is the most enthusiastic?", "o": ["Yes, that makes sense.", "Mm, I don’t know about that.", "It’s an idea, I suppose.", "What a brilliant idea!"], "c": [3]}, {"id": "II18", "v": "II", "q": "Choose the correct collocation. ___ friendly", "o": ["fragile", "ecological", "environmentally", "climate"], "c": [2]}, {"id": "II19", "v": "II", "q": "Choose the correct verb form. Look both ways when ___ the road.", "o": ["cross", "crossed", "crossing", "to cross"], "c": [2]}, {"id": "II20", "v": "II", "q": "When I was a child, I ___ like vegetables, but now I love them.", "o": ["used to", "use to", "would", "am used to"], "c": [0]}, {"id": "II21", "v": "II", "q": "Choose the best adjective. If you want to see something original and ___, go to Kizhi Island.", "o": ["dull", "ordinary", "common", "unique"], "c": [3]}, {"id": "II22", "v": "II", "q": "Choose the adjective with a neutral/ordinary meaning. Which adjective means not special?", "o": ["mind-blowing", "ordinary", "fabulous", "awe-inspiring"], "c": [1]}, {"id": "II23", "v": "II", "q": "Choose the best adjective. Ha Long Bay has ___ islands made of limestone.", "o": ["dull", "astonishing", "uninspiring", "ordinary"], "c": [1]}, {"id": "II24", "v": "II", "q": "Choose the correct word. A place where tourists stay is:", "o": ["accommodation", "feature", "atmosphere", "outskirts"], "c": [0]}, {"id": "II25", "v": "II", "q": "Choose the correct form. ___ refers to things we weren’t able to do in the past.", "o": ["might not", "probably won’t", "may not", "couldn’t"], "c": [3]}, {"id": "II26", "v": "II", "q": "Choose the best expression. Which expression means an event is impossible or has a 0% chance?", "o": ["We could …", "There’s a good chance that …", "It’s likely that …", "There’s no chance that …"], "c": [3]}, {"id": "II27", "v": "II", "q": "Choose the word that best matches the definition. “Things that you build” are:", "o": ["settings", "structures", "outskirts", "features"], "c": [1]}, {"id": "II28", "v": "II", "q": "Choose the best answer. I think you ___ give the money back.", "o": ["don’t have to", "should", "can’t", "mustn’t"], "c": [1]}, {"id": "II29", "v": "II", "q": "Choose the adjective with a negative meaning. Which adjective is negative?", "o": ["out of this world", "awesome", "uninspiring", "awe-inspiring"], "c": [2]}, {"id": "II30", "v": "II", "q": "Choose the best answer. We ___ go out on Friday. (= Perhaps we won’t.)", "o": ["mustn’t", "can’t have", "may not", "couldn’t"], "c": [2]}, {"id": "III1", "v": "III", "q": "Choose the correct collocation. ___ energy", "o": ["solar", "rough", "carbon", "global"], "c": [0]}, {"id": "III2", "v": "III", "q": "Choose the word that best fits. Smoking can ___ cancer.", "o": ["affect", "cause", "effect", "result"], "c": [1]}, {"id": "III3", "v": "III", "q": "Choose the word that best matches the definition. Someone not seeing things as they are may be:", "o": ["cautious", "unrealistic", "realistic", "certain"], "c": [1]}, {"id": "III4", "v": "III", "q": "Choose the correct form. Which sentence is NOT correct?", "o": ["I didn’t used to like jazz.", "I didn’t use to like jazz.", "I used to live here.", "Did you use to live here?"], "c": [0]}, {"id": "III5", "v": "III", "q": "Choose the correct meaning. Future perfect describes:", "o": ["a past habit", "an action happening now", "an action expected to be completed before a specific future time", "a present state"], "c": [2]}, {"id": "III6", "v": "III", "q": "Choose the correct form to complete the sentence. When I was young, we never ___ go on holidays.", "o": ["are used to", "used to", "use", "would to"], "c": [1]}, {"id": "III7", "v": "III", "q": "Choose the correct form. I’m looking forward to ___ you.", "o": ["seeing", "to see", "saw", "see"], "c": [0]}, {"id": "III8", "v": "III", "q": "Choose the best answer. We ___ go out on Friday. (= Perhaps we won’t.)", "o": ["needn’t", "couldn’t", "might not", "mustn’t"], "c": [2]}, {"id": "III9", "v": "III", "q": "Choose the adjective with a positive meaning. Which adjective is positive?", "o": ["ordinary", "awesome", "disappointing", "dull"], "c": [1]}, {"id": "III10", "v": "III", "q": "Choose the correct expression. If a flight stops in another city for a while, you:", "o": ["head up", "stop over", "turn up", "put up"], "c": [1]}, {"id": "III11", "v": "III", "q": "Choose the correct tense. “I’ll still be driving home at 5 pm” uses:", "o": ["past continuous", "future perfect", "future continuous", "present continuous"], "c": [2]}, {"id": "III12", "v": "III", "q": "Choose the best expression. Which expression means something is possible but not certain?", "o": ["It will certainly …", "It’s certain that …", "There’s no chance that …", "There’s a good chance that …"], "c": [3]}, {"id": "III13", "v": "III", "q": "Choose the correct form. This small pot ___ to me by my great-grandfather.", "o": ["was giving", "was given", "has give", "gave"], "c": [1]}, {"id": "III14", "v": "III", "q": "Choose the word that best fits. Borrowing large amounts of money can ___ in serious financial problems.", "o": ["result", "cause by", "effect on", "affect"], "c": [0]}, {"id": "III15", "v": "III", "q": "Choose the correct form. I hope ___ you.", "o": ["to see", "see", "saw", "seeing"], "c": [0]}, {"id": "III16", "v": "III", "q": "Choose the word that best fits. Getting married has had a positive ___ on him.", "o": ["affect", "cause", "result", "effect"], "c": [3]}, {"id": "III17", "v": "III", "q": "Choose the correct form to express purpose. We’re going to the beach ___ in the sun.", "o": ["lie", "lay", "to lie", "lying"], "c": [2]}, {"id": "III18", "v": "III", "q": "Choose the best answer. You ___ tell anyone else your password.", "o": ["can", "must not", "don’t have to", "are allowed to"], "c": [1]}, {"id": "III19", "v": "III", "q": "Choose the correct verb form. They escaped by ___ a tunnel under the wall.", "o": ["to dig", "digging", "dig", "dug"], "c": [1]}, {"id": "III20", "v": "III", "q": "Choose the correct form. After be/get used to, we use a ___ or a noun phrase.", "o": ["gerund", "past simple", "modal verb", "past participle only"], "c": [0]}, {"id": "III21", "v": "III", "q": "Choose the correct adjective. They’re ___ to be late. (= I’m sure they’ll be late.)", "o": ["unlikely", "sure", "possible", "doubtful"], "c": [1]}, {"id": "III22", "v": "III", "q": "Choose the correct form. By the time they get here, we ___.", "o": ["will be finish", "will finishing", "have finishing", "will have finished"], "c": [3]}, {"id": "III23", "v": "III", "q": "Choose the correct passive form. I promise that you ___ as soon as your bags arrive.", "o": ["will be informing", "will inform", "will be informed", "are inform"], "c": [2]}, {"id": "III24", "v": "III", "q": "Choose the best answer. Travelling by train is more ___ than going by plane.", "o": ["fragile", "environmentally friendly", "global warming", "carbon footprint"], "c": [1]}, {"id": "III25", "v": "III", "q": "Choose the best answer. We ___ go out on Friday. (= Perhaps we’ll go.)", "o": ["won’t", "could", "can’t", "mustn’t"], "c": [1]}, {"id": "III26", "v": "III", "q": "Choose the correct travel expression. To go somewhere for a couple of weeks means to go:", "o": ["down", "across", "away", "out"], "c": [2]}, {"id": "III27", "v": "III", "q": "Choose the best adjective. The islands are really ___.", "o": ["unremarkable", "dull", "ordinary", "breathtaking"], "c": [3]}, {"id": "III28", "v": "III", "q": "Choose the best answer. You ___ buy a ticket. Entry is free.", "o": ["are supposed to", "have to", "don’t have to", "mustn’t"], "c": [2]}, {"id": "III29", "v": "III", "q": "Choose the correct form. I watched the people ___.", "o": ["walking around", "to walk around", "walked around", "walk"], "c": [0]}, {"id": "III30", "v": "III", "q": "Choose the correct word. It’s one of the oldest cities in Mexico, with waterfalls on the ___ of the city.", "o": ["setting", "structure", "feature", "outskirts"], "c": [3]}, {"id": "IV1", "v": "IV", "q": "Choose the correct expression. A tourist may visit a famous place as a main:", "o": ["attraction", "obligation", "probability", "permission"], "c": [0]}, {"id": "IV2", "v": "IV", "q": "Choose the correct word. Spending money on experiences usually ___ longer-term happiness.", "o": ["results from", "results in", "causes by", "affects to"], "c": [1]}, {"id": "IV3", "v": "IV", "q": "Choose the correct form. I stopped ___ coffee. (= I stopped because I wanted to drink coffee.)", "o": ["to drink", "drinking", "drank", "drink"], "c": [0]}, {"id": "IV4", "v": "IV", "q": "Choose the best answer. Which sentence expresses certainty?", "o": ["We may go.", "We could go.", "We might go.", "We will go."], "c": [3]}, {"id": "IV5", "v": "IV", "q": "Choose the correct collocation. ___ footprint", "o": ["rough", "carbon", "solar", "fragile"], "c": [1]}, {"id": "IV6", "v": "IV", "q": "Choose the best answer. Which modal expresses a possible future event?", "o": ["had to", "mustn’t", "couldn’t", "might"], "c": [3]}, {"id": "IV7", "v": "IV", "q": "Choose the word that best matches the definition. “Just before the city ends and the countryside begins” means:", "o": ["structure", "setting", "feature", "outskirts"], "c": [3]}, {"id": "IV8", "v": "IV", "q": "Choose the best answer. They ___ me give them my phone.", "o": ["let", "supposed", "allowed", "forced"], "c": [0], "note": "“Let me give” is the only option that is grammatical as printed. If coercion was intended, the sentence needs “forced me to give.”"}, {"id": "IV9", "v": "IV", "q": "Choose the best answer. I ___ go home early yesterday.", "o": ["have to", "am allowed", "must", "could"], "c": [3]}, {"id": "IV10", "v": "IV", "q": "Choose the correct collocation. ___ environment", "o": ["carbon", "global", "fragile", "solar"], "c": [2]}, {"id": "IV11", "v": "IV", "q": "Choose the correct passive form. When we got to the cinema, all the best tickets ___.", "o": ["were selling", "have sold", "had sold", "had been sold"], "c": [3]}, {"id": "IV12", "v": "IV", "q": "Choose the correct form. By the time I arrive, the penguins ___ into pairs.", "o": ["will already have got", "got", "already get", "will be getting"], "c": [0]}, {"id": "IV13", "v": "IV", "q": "Choose the best answer. We ___ remove our helmets. The instructor says so.", "o": ["didn’t have to", "were supposed", "weren’t allowed to", "could"], "c": [1, 3], "note": "The wording is ambiguous: “were supposed to” expresses an expectation, while “could” expresses permission. The tense in the source also shifts; both are accepted."}, {"id": "IV14", "v": "IV", "q": "Choose the correct form. Apparently it ___ in the desert by an Egyptian farmer.", "o": ["discovered", "was discovered", "has discover", "is discovering"], "c": [1]}, {"id": "IV15", "v": "IV", "q": "Choose the correct passive form. These words ___ thousands of years ago.", "o": ["wrote", "were written", "are writing", "have write"], "c": [1]}, {"id": "IV16", "v": "IV", "q": "Choose the correct form. I could smell something ___.", "o": ["to burn", "burn", "burning", "burned"], "c": [2]}, {"id": "IV17", "v": "IV", "q": "Choose the correct position. Choose the correct sentence.", "o": ["Probably it’ll be a nice day always.", "It’ll probably be a nice day.", "It probably’ll be a nice day.", "It’ll be probably a nice day."], "c": [1]}, {"id": "IV18", "v": "IV", "q": "Choose the phrase with a very positive meaning. Which phrase means extremely impressive?", "o": ["out of this world", "a little dull", "ordinary", "uninspiring"], "c": [0]}, {"id": "IV19", "v": "IV", "q": "Choose the best answer. We were ___ to choose our own passwords.", "o": ["must", "allowed", "forced", "supposed"], "c": [1, 2, 3], "note": "“Allowed,” “forced,” and “supposed” are all grammatical; each gives a different meaning. The source gives no context to select only one."}, {"id": "IV20", "v": "IV", "q": "Choose the correct form. After explaining the theory, I’ll go on ___ some examples.", "o": ["describe", "to describe", "described", "describing"], "c": [1]}, {"id": "IV21", "v": "IV", "q": "Choose the correct passive form. The thief ___ yet.", "o": ["has not caught", "is not catching", "was not catch", "has not been caught"], "c": [3]}, {"id": "IV22", "v": "IV", "q": "Choose the passive sentence. Choose the correct passive of “Someone had already built this bridge.”", "o": ["This bridge already built someone.", "This bridge was already building.", "Someone was already built by this bridge.", "This bridge had already been built."], "c": [3]}, {"id": "IV23", "v": "IV", "q": "Choose the grammatically correct sentence. Which sentence correctly uses would for a past habit?", "o": ["We would live in London.", "We would have a dog.", "We would be good friends.", "We would talk for hours every day."], "c": [3]}, {"id": "IV24", "v": "IV", "q": "Choose the correct collocation. The Earth’s ___", "o": ["friendly", "atmosphere", "energy", "footprint"], "c": [1]}, {"id": "IV25", "v": "IV", "q": "Choose the best answer. It ___ to contain at least 20 characters.", "o": ["was allowed", "could", "didn’t have", "had"], "c": [3]}, {"id": "IV26", "v": "IV", "q": "Choose the correct word. The most amazing ___ you can see here is the nearby volcano.", "o": ["setting", "outskirts", "feature", "structure"], "c": [2]}, {"id": "IV27", "v": "IV", "q": "Choose the correct question. ___ you use to live in London?", "o": ["Would", "Were", "Do", "Did"], "c": [3]}, {"id": "IV28", "v": "IV", "q": "Choose the correct passive form. The first email between two organisations ___ in 1971.", "o": ["is sending", "was sent", "has send", "sent"], "c": [1]}, {"id": "IV29", "v": "IV", "q": "Choose the expression that is most cautious. Which is the most cautious?", "o": ["Yes, good idea.", "What a brilliant idea!", "It’s an idea, I suppose.", "That’s a great idea!"], "c": [2]}, {"id": "IV30", "v": "IV", "q": "Choose the correct passive form. Currently, English ___ as an official language in almost 60 countries.", "o": ["uses", "has use", "is used", "was used"], "c": [2]}]</script>
+<script>
+const PRISTINE='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LET=['A','B','C','D'],VARS=['I','II','III','IV'];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+function shuffle(a){a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}return a}
+
+/* ---------- Question bank (original data + local edits) ---------- */
+const RAW=$('bankData').textContent;
+const ORIG=JSON.parse(RAW).map(x=>({id:x.id,v:x.v,q:x.q,o:x.o.slice(),c:x.c.slice(),note:x.note||''}));
+const BASE=new Map(ORIG.map(x=>[x.id,x]));
+function sig(s){let h=5381;for(let k=0;k<s.length;k++)h=((h<<5)+h+s.charCodeAt(k))|0;return h+':'+s.length}
+const SIG=sig(RAW);
+let BANK=[];
+function renum(){const cnt={};BANK.forEach((x,k)=>{x.num=k+1;cnt[x.v]=(cnt[x.v]||0)+1;x.vn=cnt[x.v]})}
+function loadBank(){let items=null;try{const r=JSON.parse(store.get('pal-bank')||'null');if(r&&r.sig===SIG&&Array.isArray(r.items)&&r.items.length)items=r.items}catch(e){}
+ BANK=(items||ORIG).map(x=>({id:x.id,v:x.v,q:x.q,o:x.o.slice(),c:x.c.slice(),note:x.note||''}));renum()}
+const saveBank=()=>store.set('pal-bank',JSON.stringify({sig:SIG,items:BANK.map(({id,v,q,o,c,note})=>({id,v,q,o,c,note}))}));
+loadBank();
+
+/* ---------- State ---------- */
+let Q=[],ans=[],revealed=[],activeMode='',submitted=false,instant=false,curQ=0,cur='start',beforeSearch='start',beforeProfile='start',filterAdm='all';
+const isOk=(x,a)=>a!==null&&x.c.includes(a);
+function modeName(m){return m.startsWith('variant:')?'Variant '+m.slice(8):({mix:'Mix / Shuffle',random:'Random test',retry:'Retry mistakes'}[m]||m)}
+
+/* ---------- Theme and font ---------- */
+$('bTheme').onclick=()=>{const v=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',v);store.set('pal-theme',v)};
+const SIZES=[.85,1,1.15,1.3,1.5];let si=SIZES.indexOf(parseFloat(store.get('pal-fs')));if(si<0)si=1;
+function applyFs(){document.documentElement.style.setProperty('--fs',SIZES[si]);$('fMinus').disabled=si===0;$('fPlus').disabled=si===SIZES.length-1;store.set('pal-fs',SIZES[si])}
+$('fMinus').onclick=()=>{if(si>0){si--;applyFs()}};$('fPlus').onclick=()=>{if(si<SIZES.length-1){si++;applyFs()}};applyFs();
+
+/* ---------- Navigation ---------- */
+const SECTIONS=['start','quiz','search','setup','profile','admin','aedit'];
+function show(id){if(!me()&&id!=='setup'){openSetup(null);return}
+ SECTIONS.forEach(s=>$(s).hidden=s!==id);cur=id;
+ $('bSearch').classList.toggle('on',id==='search');$('bProfile').classList.toggle('on',id==='profile');
+ $('bProfile').setAttribute('aria-label',id==='profile'?'Exit profile':'Student profile');
+ const lock=['quiz','setup','admin','aedit'].includes(id);$('bSearch').hidden=lock;$('bProfile').hidden=lock;
+ if(id==='start')updateWho();if(id==='profile')renderProfile();if(id==='admin')renderAdmin();
+ window.scrollTo(0,0)}
+
+/* ---------- Start screen ---------- */
+function buildStart(){
+ VARS.forEach(v=>{const n=BANK.filter(x=>x.v===v).length;$('vc'+v).textContent=n+' question'+(n===1?'':'s');$('vb'+v).disabled=!n});
+ $('mixc').textContent='All '+BANK.length+' questions in a random order';
+ $('cnt').max=BANK.length;$('rng').textContent='of '+BANK.length;
+ $('chips').innerHTML='';[10,20,30,50,100].filter(n=>n<BANK.length).forEach(n=>{const b=document.createElement('button');b.className='chip';b.textContent=n;b.onclick=()=>$('cnt').value=n;$('chips').appendChild(b)})}
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{const m=b.dataset.mode;
+ if(m==='mix')begin(shuffle(BANK),'mix');else begin(BANK.filter(x=>x.v===m),'variant:'+m)});
+$('goRand').onclick=()=>{const n=parseInt($('cnt').value,10);
+ if(!Number.isInteger(n)||n<1||n>BANK.length){$('err').textContent='Enter a whole number from 1 to '+BANK.length+'.';return}
+ $('err').textContent='';begin(shuffle(BANK).slice(0,n),'random')};
+
+/* ---------- Quiz (all questions on one page) ---------- */
+function cardHTML(x,i){
+ const origin=activeMode.startsWith('variant:')?'':`<span class="q-origin">Variant ${x.v} · question ${x.vn}</span>`;
+ return `<article class="question" id="question-${i}" data-i="${i}"><div class="q-top"><span class="q-number">${i+1}</span><div style="flex:1"><p class="q-prompt">${esc(x.q)}${origin}</p></div></div>
+ <div class="options">${x.ord.map((k,p)=>`<label class="option"><input type="radio" name="answer-${i}" value="${k}"><span class="letter">${LET[p]})</span><span class="opt-text">${esc(x.o[k])}</span></label>`).join('')}</div></article>`}
+function begin(list,mode){
+ if(!list.length)return;
+ activeMode=mode;submitted=false;instant=$('instant').checked;
+ Q=list.map(x=>({...x,ord:shuffle([0,1,2,3])}));ans=Q.map(()=>null);revealed=Q.map(()=>false);curQ=0;
+ $('modeLabel').textContent=mode.startsWith('variant:')?'Quiz':modeName(mode);
+ $('quizHeading').textContent=mode.startsWith('variant:')?modeName(mode):mode==='mix'?'All variants · shuffled':mode==='random'?'Random test · '+Q.length+' questions':'Retry mistakes · '+Q.length+' questions';
+ $('questionList').innerHTML=Q.map(cardHTML).join('');
+ $('dots').innerHTML='';Q.forEach((_,k)=>{const d=document.createElement('button');d.className='dot';d.type='button';d.textContent=k+1;d.onclick=()=>setCur(k,true);$('dots').appendChild(d)});
+ $('resultBanner').hidden=true;$('submitButton').disabled=false;$('submitButton').textContent='Submit answers';$('footerHelper').textContent='Choose one answer for each question.';
+ show('quiz');updateProgress();setCur(0,false)}
+function setCur(i,scroll){curQ=i;document.querySelectorAll('.question.current').forEach(e=>e.classList.remove('current'));
+ const c=$('question-'+i);if(c){c.classList.add('current');if(scroll)c.scrollIntoView({behavior:'smooth',block:'center'})}paintDots()}
+function paintDots(){$('dots').querySelectorAll('.dot').forEach((d,k)=>{d.className='dot'+(revealed[k]?(isOk(Q[k],ans[k])?' ok':' no'):ans[k]!==null?' a':'')+(k===curQ?' c':'')})}
+function updateProgress(){const n=ans.filter(v=>v!==null).length;
+ $('answeredCount').textContent=submitted?Q.length+' of '+Q.length+' reviewed':n+' of '+Q.length+' answered';
+ $('progressBar').style.width=(Q.length?(submitted?100:n/Q.length*100):0)+'%';paintDots()}
+function reveal(i){if(revealed[i])return;revealed[i]=true;
+ const x=Q[i],card=$('question-'+i),picked=ans[i],ok=isOk(x,picked);
+ card.classList.add(ok?'result-correct':'result-wrong');
+ card.querySelectorAll('input[type=radio]').forEach(inp=>{const k=+inp.value,lab=inp.closest('.option');inp.disabled=true;if(x.c.includes(k))lab.classList.add('correct');if(k===picked&&!ok)lab.classList.add('incorrect')});
+ const acc=x.c.map(k=>({p:x.ord.indexOf(k),k})).sort((a,b)=>a.p-b.p).map(({p,k})=>LET[p]+') '+x.o[k]).join(' / '),pl=x.c.length>1?'s':'';
+ const f=document.createElement('p');f.className='feedback '+(ok?'good':'bad');
+ f.textContent=ok?'Correct. Accepted answer'+pl+': '+acc+'.':picked===null?'No answer selected. Accepted answer'+pl+': '+acc+'.':'Your answer: '+LET[x.ord.indexOf(picked)]+') '+x.o[picked]+'. Accepted answer'+pl+': '+acc+'.';
+ card.appendChild(f);
+ if(x.note){const n=document.createElement('p');n.className='note';n.textContent='Answer note: '+x.note;card.appendChild(n)}}
+$('questionList').addEventListener('change',e=>{const r=e.target;if(r.type!=='radio')return;
+ const i=+r.name.split('-')[1];ans[i]=+r.value;if(instant&&!submitted)reveal(i);setCur(i,false);updateProgress()});
+$('questionList').addEventListener('click',e=>{const c=e.target.closest('.question');if(c)setCur(+c.dataset.i,false)});
+function submit(){if(submitted)return;
+ const left=ans.filter(v=>v===null).length;if(left&&!confirm(left+' question(s) unanswered. Submit anyway?'))return;
+ submitted=true;let c=0,w=0,s=0;Q.forEach((x,i)=>{if(ans[i]===null)s++;else if(isOk(x,ans[i]))c++;else w++;reveal(i)});
+ const p=Math.round(c/Q.length*100),pr=me();
+ if(pr){pr.history.push({t:Date.now(),mode:activeMode,total:Q.length,c,w,s,p});saveDB()}
+ const b=$('resultBanner');b.hidden=false;
+ b.innerHTML=`<div><div class="result-score">${c} / ${Q.length}</div><div class="result-caption">${p}% correct · ${w} wrong · ${s} skipped${pr?' · saved to your profile history':''}</div></div><div class="rb-actions"></div>`;
+ const act=b.querySelector('.rb-actions');
+ if(w+s>0){const r=document.createElement('button');r.className='secondary';r.type='button';r.textContent='Retry mistakes';r.onclick=()=>begin(Q.filter((x,i)=>!isOk(x,ans[i])),'retry');act.appendChild(r)}
+ const a=document.createElement('button');a.className='primary';a.type='button';a.textContent='Practice again';
+ a.onclick=()=>{const m=activeMode;if(m==='mix')begin(shuffle(BANK),'mix');else if(m==='random')begin(shuffle(BANK).slice(0,Q.length),'random');else if(m==='retry')begin(shuffle(Q),'retry');else begin(BANK.filter(x=>x.v===m.slice(8)),m)};act.appendChild(a);
+ $('submitButton').disabled=true;$('submitButton').textContent='Submitted';$('footerHelper').textContent='Final score: '+c+' of '+Q.length+'.';
+ updateProgress();window.scrollTo({top:0,behavior:'smooth'})}
+$('submitButton').onclick=submit;
+$('homeButton').onclick=()=>{if(!submitted&&ans.some(v=>v!==null)&&!confirm('Leave this test? Your answers will be lost.'))return;show('start')};
+
+/* ---------- Keyboard ---------- */
+document.addEventListener('keydown',e=>{
+ if(cur!=='quiz'||e.ctrlKey||e.metaKey||e.altKey)return;
+ const tg=e.target;if(tg&&(tg.tagName==='TEXTAREA'||(tg.tagName==='INPUT'&&['text','search','number','password'].includes(tg.type))))return;
+ const k=e.key;
+ if(k==='ArrowRight'){e.preventDefault();if(curQ<Q.length-1)setCur(curQ+1,true)}
+ else if(k==='ArrowLeft'){e.preventDefault();if(curQ>0)setCur(curQ-1,true)}
+ else if(/^[1-4]$/.test(k)){e.preventDefault();if(revealed[curQ])return;const kk=Q[curQ].ord[+k-1];ans[curQ]=kk;
+  const r=document.querySelector(`#question-${curQ} input[value="${kk}"]`);if(r)r.checked=true;if(instant&&!submitted)reveal(curQ);updateProgress()}
+ else if(k==='Enter'&&curQ===Q.length-1&&!submitted){e.preventDefault();if(document.activeElement)document.activeElement.blur();submit()}
+});
+
+/* ---------- Profiles (localStorage) ---------- */
+let DB={profiles:[],active:null};
+try{const r=JSON.parse(store.get('pal-db')||'null');if(r&&Array.isArray(r.profiles))DB=r}catch(e){}
+DB.profiles.forEach(p=>{if(!Array.isArray(p.history))p.history=[]});
+const saveDB=()=>store.set('pal-db',JSON.stringify(DB));
+const me=()=>DB.profiles.find(p=>p.id===DB.active)||null;
+const ICO='style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"';
+const ICON_TRASH=`<svg viewBox="0 0 24 24" ${ICO}><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v5M14 11v5"/></svg>`;
+const ICON_USER=`<svg viewBox="0 0 24 24" ${ICO}><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>`;
+let setupEdit=null,setupFirst=false;
+function updateWho(){const p=me();$('who').innerHTML=p?ICON_USER+'<span>'+esc(p.name)+' · '+esc(p.group)+'</span>':''}
+function openSetup(editId){setupEdit=editId;setupFirst=DB.profiles.length===0;
+ const p=editId?DB.profiles.find(x=>x.id===editId):null;
+ $('setupTitle').textContent=p?'Edit profile':(setupFirst?'Welcome':'New profile');
+ $('setupSub').textContent=setupFirst?'Enter your details once. Your results will be saved on this device.':'';
+ $('pName').value=p?p.name:'';$('pGroup').value=p?p.group:'';$('pErr').textContent='';$('pCancel').hidden=!DB.profiles.length;
+ show('setup');$('pName').focus()}
+function saveSetup(){const n=$('pName').value.trim().replace(/\s+/g,' '),g=$('pGroup').value.trim();
+ if(n.length<2){$('pErr').textContent='Enter your full name.';return}
+ if(!g){$('pErr').textContent='Enter your academic group.';return}
+ if(setupEdit){const p=DB.profiles.find(x=>x.id===setupEdit);p.name=n;p.group=g}
+ else{const p={id:uid(),name:n,group:g,history:[]};DB.profiles.push(p);DB.active=p.id}
+ saveDB();show(setupFirst?'start':'profile')}
+$('pSave').onclick=saveSetup;$('pCancel').onclick=()=>show(me()?'profile':'start');
+[$('pName'),$('pGroup')].forEach(e=>e.addEventListener('keydown',k=>{if(k.key==='Enter'){k.preventDefault();saveSetup()}}));
+$('bProfile').onclick=()=>{if(cur==='profile'){show(beforeProfile);return}beforeProfile=cur;show('profile')};
+$('pEdit').onclick=()=>openSetup(DB.active);$('pNew').onclick=()=>openSetup(null);
+function fmtDate(ts){const d=new Date(ts),z=n=>String(n).padStart(2,'0');return z(d.getDate())+'.'+z(d.getMonth()+1)+'.'+d.getFullYear()+' '+z(d.getHours())+':'+z(d.getMinutes())}
+function renderProfile(){const p=me();if(!p)return;
+ $('pAv').textContent=p.name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join('');
+ $('pTitle').textContent=p.name;$('pGrp').textContent='Group: '+p.group;
+ const H=p.history,n=H.length;
+ $('kA').textContent=n;$('kAvg').textContent=n?Math.round(H.reduce((a,r)=>a+r.p,0)/n)+'%':'-';$('kBest').textContent=n?Math.max(...H.map(r=>r.p))+'%':'-';
+ $('hClear').hidden=!n;
+ $('hist').innerHTML=n?'<div class="sc"><table><thead><tr><th>Date</th><th>Mode</th><th>Total</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Score</th></tr></thead><tbody>'+
+  H.slice().reverse().map(r=>`<tr><td>${fmtDate(r.t)}</td><td>${esc(modeName(r.mode))}</td><td>${r.total}</td><td>${r.c}</td><td>${r.w}</td><td>${r.s}</td><td><span class="sp ${r.p>=71?'ok':r.p>=56?'mid':'no'}">${r.p}%</span></td></tr>`).join('')+'</tbody></table></div>'
+  :'<div class="panel empty">No completed tests yet.</div>';
+ $('plist').innerHTML=DB.profiles.map(q=>`<div class="prow"><div><b>${esc(q.name)}</b><span class="mu">${esc(q.group)} · ${q.history.length} attempt${q.history.length===1?'':'s'}</span></div>
+  ${q.id===DB.active?'<span class="tag">Active</span>':`<button class="secondary sm" data-act="sw" data-id="${q.id}">Switch</button>`}
+  <button class="ib fl2" data-act="del" data-id="${q.id}" aria-label="Delete profile">${ICON_TRASH}</button></div>`).join('')}
+$('plist').onclick=e=>{const b=e.target.closest('button[data-act]');if(!b)return;const id=b.dataset.id;
+ if(b.dataset.act==='sw'){DB.active=id;saveDB();renderProfile()}
+ else{const q=DB.profiles.find(x=>x.id===id);if(!confirm('Delete profile "'+q.name+'" and all of its history?'))return;
+  DB.profiles=DB.profiles.filter(x=>x.id!==id);if(DB.active===id)DB.active=DB.profiles.length?DB.profiles[0].id:null;saveDB();
+  if(!DB.profiles.length)openSetup(null);else renderProfile()}};
+$('hClear').onclick=()=>{if(confirm('Clear all test history for this profile?')){me().history=[];saveDB();renderProfile()}};
+
+/* ---------- Global search ---------- */
+const norm=s=>s.toLowerCase().replace(/[\u2018\u2019\u02bb\u02bc\u02b9`\u00b4]/g,"'");
+function hl(text,terms){if(!terms.length)return esc(text);const n=norm(text),r=[];
+ terms.forEach(tm=>{let p=0;while((p=n.indexOf(tm,p))>-1){r.push([p,p+tm.length]);p+=tm.length}});
+ if(!r.length)return esc(text);r.sort((a,b)=>a[0]-b[0]);const m=[r[0].slice()];
+ for(const q of r.slice(1)){const l=m[m.length-1];if(q[0]<=l[1])l[1]=Math.max(l[1],q[1]);else m.push(q.slice())}
+ let o='',p=0;m.forEach(([s,e])=>{o+=esc(text.slice(p,s))+'<mark>'+esc(text.slice(s,e))+'</mark>';p=e});return o+esc(text.slice(p))}
+$('bSearch').onclick=()=>{if(cur==='search'){show(beforeSearch);return}beforeSearch=cur;show('search');$('sq').focus();runSearch()};
+let tmr;$('sq').addEventListener('input',()=>{clearTimeout(tmr);tmr=setTimeout(runSearch,120)});
+function runSearch(){const raw=$('sq').value.trim();
+ if(!raw){$('sinfo').textContent='';$('slist').innerHTML='';return}
+ const terms=norm(raw).split(/\s+/).filter(Boolean),found=[];
+ BANK.forEach(x=>{const f=[['q',norm(x.q)],...x.o.map((o,k)=>[k,norm(o)])],all=f.map(v=>v[1]).join(' | ');
+  if(!terms.every(tm=>all.includes(tm)))return;
+  const hits=new Set(),where=[];f.forEach(([k,s])=>{if(terms.some(tm=>s.includes(tm)))hits.add(k)});
+  if(hits.has('q'))where.push('Question');[0,1,2,3].forEach(k=>{if(hits.has(k))where.push('Option '+LET[k])});
+  found.push({x,hits,where})});
+ $('sinfo').textContent=found.length?found.length+' result'+(found.length>1?'s':''):'No results';
+ $('slist').innerHTML=found.length?found.map(({x,hits,where})=>`<div class="panel pad" style="margin-bottom:10px;padding:14px 16px;border-radius:16px">
+  <div class="q-prompt" style="margin:0 0 8px"><span class="num">${x.v}-${x.vn}</span> ${hl(x.q,terms)}</div>
+  ${x.o.map((o,k)=>`<div class="so${x.c.includes(k)?' ok':''}${hits.has(k)?' hit':''}"><b>${LET[k]})</b> ${hl(o,terms)}</div>`).join('')}
+  <div class="mu" style="margin-top:10px"><span class="tag">Variant ${x.v}</span>${where.map(w=>'<span class="tag">'+w+'</span>').join('')}</div></div>`).join(''):'<div class="empty">Nothing found. Try a shorter word.</div>'}
+
+/* ---------- Admin panel ---------- */
+let admUnlocked=false,admEdit=-1,admFlags=[];
+try{admFlags=JSON.parse(store.get('pal-flags')||'[]')}catch(e){}
+const saveFlags=()=>store.set('pal-flags',JSON.stringify(admFlags));
+const BMARK='<svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>';
+let tapN=0,tapT=0;
+$('mainTitle').addEventListener('click',()=>{const now=Date.now();tapN=now-tapT<1500?tapN+1:1;tapT=now;if(tapN>=5){tapN=0;if(cur==='start')show('admin')}});
+function leaveAdmin(){admUnlocked=false;try{if(location.hash==='#admin')history.replaceState(null,'',location.pathname+location.search)}catch(e){}show('start')}
+$('aExit').onclick=leaveAdmin;$('gExit').onclick=leaveAdmin;
+const pinHash=s=>sig('pin:'+s);
+function tryPin(){if(pinHash($('gIn').value)===store.get('pal-pin')){admUnlocked=true;$('gIn').value='';renderAdmin()}else $('gErr').textContent='Wrong PIN.'}
+$('gGo').onclick=tryPin;$('gIn').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryPin()}});
+$('pinSet').onclick=()=>{const v=$('pinIn').value;if(v.length<4){$('aMsg').textContent='PIN must be at least 4 characters.';return}store.set('pal-pin',pinHash(v));$('pinIn').value='';admUnlocked=true;renderAdmin();$('aMsg').textContent='PIN saved.'};
+$('pinOff').onclick=()=>{store.set('pal-pin','');renderAdmin();$('aMsg').textContent='PIN removed.'};
+function modState(x){const b=BASE.get(x.id);if(!b)return'new';return(b.v===x.v&&b.q===x.q&&b.o.join('\u0001')===x.o.join('\u0001')&&b.c.join()===x.c.join()&&(b.note||'')===(x.note||''))?'':'mod'}
+function renderAdmin(){const pin=store.get('pal-pin'),gated=!!pin&&!admUnlocked;
+ $('aGate').hidden=!gated;$('aPanel').hidden=gated;if(gated){$('gErr').textContent='';return}
+ const mod=BANK.filter(x=>modState(x)==='mod').length,nw=BANK.filter(x=>modState(x)==='new').length;
+ const present=new Set(BANK.map(x=>x.id)),del=ORIG.filter(o=>!present.has(o.id)).length;
+ $('aSum').textContent=BANK.length+' questions · '+mod+' modified · '+nw+' new · '+del+' deleted';$('pinOff').hidden=!pin;
+ document.querySelectorAll('[data-af]').forEach(b=>b.classList.toggle('on',b.dataset.af===filterAdm));renderAList()}
+document.querySelectorAll('[data-af]').forEach(b=>b.onclick=()=>{filterAdm=b.dataset.af;renderAdmin()});
+let atm;$('aSq').addEventListener('input',()=>{clearTimeout(atm);atm=setTimeout(renderAList,120)});
+function renderAList(){const raw=$('aSq').value.trim(),terms=raw?norm(raw).split(/\s+/).filter(Boolean):[],out=[];
+ BANK.forEach((x,k)=>{const st=modState(x),fl=admFlags.includes(x.id);
+  if(filterAdm==='mod'&&!st)return;if(filterAdm==='flag'&&!fl)return;
+  if(terms.length){const all=norm(x.q+' | '+x.o.join(' | ')+' | '+x.v+'-'+x.vn);if(!terms.every(tm=>all.includes(tm)))return}
+  out.push(`<div class="arow" data-k="${k}"><span class="num">${x.v}-${x.vn}</span><div class="at"><div class="aq">${esc(x.q)}</div>
+  <div class="mu">Answer: ${x.c.map(j=>LET[j]).join(', ')}${st==='mod'?' <span class="tag mod">Modified</span>':st==='new'?' <span class="tag nw">New</span>':''}</div></div>
+  <button class="ib fl2${fl?' on':''}" data-flag="${k}" aria-label="Mark for check">${BMARK}</button></div>`)});
+ $('aList').innerHTML=out.join('')||'<div class="empty">No results</div>'}
+$('aList').onclick=e=>{const f=e.target.closest('[data-flag]');
+ if(f){const x=BANK[+f.dataset.flag],p=admFlags.indexOf(x.id);if(p<0)admFlags.push(x.id);else admFlags.splice(p,1);saveFlags();renderAdmin();return}
+ const r=e.target.closest('.arow');if(r)openEditor(+r.dataset.k)};
+function openEditor(k){admEdit=k;const x=k<0?{id:null,v:'I',q:'',o:['','','',''],c:[],note:''}:BANK[k];
+ $('eTitle').textContent=k<0?'New question':'Edit question '+x.v+'-'+x.vn;
+ $('eV').value=x.v;$('eQ').value=x.q;$('eN').value=x.note||'';
+ for(let j=0;j<4;j++){$('eO'+j).value=x.o[j];$('eC'+j).checked=x.c.includes(j)}
+ $('eErr').textContent='';$('eDel').hidden=k<0;$('eFlag').hidden=k<0;$('eSaveNext').hidden=k<0;
+ $('eReset').hidden=k<0||!BASE.has(x.id)||!modState(x);$('eFlag').classList.toggle('on',k>=0&&admFlags.includes(x.id));
+ show('aedit')}
+function flash(m){$('aMsg').textContent=m}
+function saveEditor(next){const v=$('eV').value,q=$('eQ').value.trim(),note=$('eN').value.trim(),o=[0,1,2,3].map(j=>$('eO'+j).value.trim()),c=[0,1,2,3].filter(j=>$('eC'+j).checked);
+ if(!q){$('eErr').textContent='Question text cannot be empty.';return}if(o.some(s=>!s)){$('eErr').textContent='Fill in all four options.';return}if(!c.length){$('eErr').textContent='Select at least one correct answer.';return}
+ let k=admEdit,added=false;
+ if(k<0){let at=-1;BANK.forEach((x,i)=>{if(x.v===v)at=i});at=at<0?BANK.length:at+1;BANK.splice(at,0,{id:'u'+uid(),v,q,o,c,note});k=at;added=true}
+ else{const x=BANK[k],moved=x.v!==v;Object.assign(x,{v,q,o,c,note});if(moved){BANK.splice(k,1);let at=-1;BANK.forEach((y,i)=>{if(y.v===v)at=i});at=at<0?BANK.length:at+1;BANK.splice(at,0,x);k=at}}
+ renum();saveBank();buildStart();
+ if(next&&!added&&k<BANK.length-1){openEditor(k+1);return}
+ show('admin');flash(added?'Question added.':'Saved.')}
+$('eSave').onclick=()=>saveEditor(false);$('eSaveNext').onclick=()=>saveEditor(true);$('eBack').onclick=()=>{show('admin');flash('')};
+$('eFlag').onclick=()=>{if(admEdit<0)return;const id=BANK[admEdit].id,p=admFlags.indexOf(id);if(p<0)admFlags.push(id);else admFlags.splice(p,1);saveFlags();$('eFlag').classList.toggle('on',p<0)};
+$('eReset').onclick=()=>{const x=BANK[admEdit],b=BASE.get(x.id);Object.assign(x,{v:b.v,q:b.q,o:b.o.slice(),c:b.c.slice(),note:b.note||''});renum();saveBank();buildStart();show('admin');flash('Original restored.')};
+$('eDel').onclick=()=>{const x=BANK[admEdit];if(!confirm('Delete question '+x.v+'-'+x.vn+'? This cannot be undone.'))return;BANK.splice(admEdit,1);renum();saveBank();buildStart();show('admin');flash('Question deleted.')};
+$('aAdd').onclick=()=>openEditor(-1);
+function download(name,text,type){const b=new Blob([text],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},800)}
+function buildSite(){const json=JSON.stringify(BANK.map(({id,v,q,o,c,note})=>({id,v,q,o,c,note}))).replace(/</g,'\\u003c');
+ return PRISTINE.replace(/(<script id="bankData" type="application\/json">)[\s\S]*?(<\/script>)/,(m,a,b)=>a+json+b).replace(/(<html[^>]*?)data-theme="[^"]*"/,'$1data-theme="light"')}
+$('aSite').onclick=()=>download('index.html',buildSite(),'text/html');
+$('aExp').onclick=()=>download('questions.json',JSON.stringify(BANK.map(({id,v,q,o,c,note})=>({id,v,q,o,c,note})),null,1),'application/json');
+$('aImp').onclick=()=>$('aFile').click();
+$('aFile').addEventListener('change',()=>{const f=$('aFile').files&&$('aFile').files[0];if(!f)return;const rd=new FileReader();
+ rd.onload=()=>{try{const a=JSON.parse(rd.result);if(!Array.isArray(a)||!a.length)throw 0;const seen=new Set();
+  const nb=a.map(x=>{if(!x||typeof x.q!=='string'||!x.q.trim()||!Array.isArray(x.o)||x.o.length!==4||x.o.some(s=>typeof s!=='string'||!s.trim()))throw 0;
+   let c=(Array.isArray(x.c)?x.c:[x.c]).map(Number).filter(j=>j>=0&&j<4);c=[...new Set(c)].sort();if(!c.length)throw 0;
+   let id=x.id!=null?String(x.id):'u'+uid();if(seen.has(id))id='u'+uid();seen.add(id);
+   return{id,v:VARS.includes(x.v)?x.v:'I',q:x.q.trim(),o:x.o.map(s=>s.trim()),c,note:(x.note||'').trim()}});
+  if(!confirm('Replace all questions with the file contents ('+nb.length+' questions)?'))return;BANK=nb;renum();saveBank();buildStart();renderAdmin();flash('Imported '+nb.length+' questions.')}catch(e){flash('Invalid file format.')}
+  $('aFile').value=''};rd.readAsText(f)});
+$('aRst').onclick=()=>{if(!confirm('Discard all edits and restore the original questions?'))return;store.set('pal-bank','');loadBank();buildStart();renderAdmin();flash('Original restored.')};
+window.addEventListener('hashchange',()=>{if(location.hash==='#admin'&&cur==='start')show('admin')});
+
+/* ---------- Update note ---------- */
+let NOTE={show:false};
+try{NOTE=JSON.parse($('noteData').textContent)}catch(e){}
+const noteKey=()=>sig(JSON.stringify(NOTE));
+function renderNote(){const el=$('siteNote'),txt=String(NOTE.text||'').trim();
+ el.hidden=!(NOTE.show&&txt)||store.get('pal-note-seen')===noteKey();if(el.hidden)return;
+ $('noteDate').textContent=NOTE.date||'';$('noteText').textContent=txt}
+$('noteClose').onclick=()=>{store.set('pal-note-seen',noteKey());renderNote()};
+
+/* ---------- Init ---------- */
+buildStart();renderNote();
+if(!me()&&DB.profiles.length)DB.active=DB.profiles[0].id;
+if(me())show('start');else openSetup(null);
+if(location.hash==='#admin'&&cur==='start')show('admin');
+</script></body></html>
